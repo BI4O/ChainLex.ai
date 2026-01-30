@@ -1,0 +1,211 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+
+const modules = [
+  {
+    name: "LexEnforcer",
+    items: [
+      "Compliance design",
+      "SPV Setup",
+      "KYC/AML",
+      "eBL Wrapping",
+      "Smart Contract Deploy"
+    ]
+  },
+  {
+    name: "LexOracle",
+    items: ["Logistics API", "Legal State Monitor", "Risk Trigger"]
+  },
+  {
+    name: "LexEnforcer",
+    items: [
+      "Scenario A (Success): Carao Arrives-Auto-Repavment via Smart Contract.",
+      "Scenario B (Default): Payment Missed-- I rigger Maritime Lien & Asset Seizure."
+    ]
+  }
+];
+
+export default function FlagshipUseCase() {
+  return (
+    <section className="relative bg-white py-20 lg:py-32 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        <Image src="/images/flagship-bg.png" alt="Flagship background" fill />
+      </div>
+
+      <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12">
+        {/* Header */}
+        <div className="mb-8">
+          <h2 className="font-[var(--font-playfair)] text-[48px] font-semibold text-black mb-2">
+            Flagship Use Case
+          </h2>
+          <p className="text-[#00000080] text-[16px]">
+            Transforming the $25 trillion of global trade underpinned by Bills
+            of Lading into liquid, programmable, and enforceable digital assets.
+          </p>
+        </div>
+
+        {/* Subtitle */}
+        <h3 className="text-[24px] font-semibold text-black text-center mb-14">
+          eBL RWA Tokenization
+        </h3>
+
+        {/* Process Flow */}
+        <div className="flex items-start justify-between gap-4 mb-12">
+          {/* Ship Icon */}
+          <div className="flex-shrink-0 pt-4">
+            <Image
+              src="/icons/ship.svg"
+              alt="Ship Icon"
+              width={80}
+              height={60}
+            />
+          </div>
+
+          {/* Dotted Line Arrow */}
+          <div className="flex items-center pt-12 flex-shrink-0">
+            <Image
+              src="/images/dotted-line-haircut.png"
+              alt="Arrow"
+              width={80}
+              height={12}
+            />
+          </div>
+
+          {/* Three Module Cards */}
+          <div className="flex gap-4 justify-center">
+            {modules.map((module, index) => (
+              <div key={index} className="flex flex-col items-center">
+                {/* Module Card */}
+                <div
+                  className="text-white px-6 py-3 rounded-xl text-[18px] font-semibold min-w-[190px] h-[103px] flex items-center justify-center relative"
+                  style={{
+                    background: "#324998"
+                  }}
+                >
+                  {module.name}
+                  {/* Triangle pointer */}
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 -bottom-[7px] w-6 h-2"
+                    style={{
+                      background: "#324998",
+                      clipPath: "polygon(50% 100%, 0% 0%, 100% 0%)"
+                    }}
+                  />
+                </div>
+
+                {/* Items List */}
+                <div className="mt-6 space-y-2">
+                  {module.items.map((item, itemIndex) => (
+                    <div
+                      key={itemIndex}
+                      className="flex items-center gap-1 text-[14px] text-[#000000CC] bg-[#FFFFFF80] rounded-[10px] px-4 py-2 w-[190px] relative"
+                    >
+                      <span className="flex-1 flex items-center justify-between">
+                        {item}
+                        {item && (
+                          <svg
+                            className="w-5 h-5 text-[#4CAF50] flex-shrink-0 absolute right-[5px] bottom-[8px]"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                          </svg>
+                        )}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Dotted Line Arrow */}
+          <div className="flex items-center pt-8 flex-shrink-0">
+            <Image
+              src="/images/dotted-line-haircut.png"
+              alt="Arrow"
+              width={80}
+              height={12}
+            />
+          </div>
+
+          {/* Right Icons */}
+          <Image
+            src="/icons/nine-square-grid.svg"
+            alt="Grid Icon"
+            width={64}
+            height={80}
+          />
+          <div className="flex items-center pt-8 flex-shrink-0">
+            <Image
+              src="/images/dotted-line-haircut.png"
+              alt="Arrow"
+              width={80}
+              height={12}
+            />
+          </div>
+          <Image
+            src="/icons/trend-line.svg"
+            alt="Trend Icon"
+            width={64}
+            height={64}
+          />
+        </div>
+
+        {/* Timeline with Scale */}
+        <div className="relative mb-12">
+          {/* Scale Marks - pointing up */}
+          <div className="relative h-4">
+            {/* Mark 1 - after eBL */}
+            <div className="absolute w-[2px] h-4 bg-black bottom-0" style={{ left: "8%" }} />
+            {/* Mark 2 - after ChainLex Platform */}
+            <div className="absolute w-[2px] h-4 bg-black bottom-0" style={{ left: "68%" }} />
+            {/* Mark 3 - after eBL RWA */}
+            <div className="absolute w-[2px] h-4 bg-black bottom-0" style={{ left: "85%" }} />
+          </div>
+
+          {/* Horizontal Line */}
+          <div className="h-[2px] bg-black" />
+
+          {/* Labels - positioned in center of each region */}
+          <div className="flex pt-4">
+            {/* eBL region: 0% - 8% */}
+            <div style={{ width: "8%" }} className="text-center">
+              <span className="text-[14px] font-medium text-black">eBL</span>
+            </div>
+            {/* ChainLex Platform region: 8% - 68% */}
+            <div style={{ width: "60%" }} className="text-center">
+              <span className="text-[14px] font-medium text-black">ChainLex Platform</span>
+            </div>
+            {/* eBL RWA region: 68% - 85% */}
+            <div style={{ width: "17%" }} className="text-center">
+              <span className="text-[14px] font-medium text-black">eBL RWA</span>
+            </div>
+            {/* Global Liquidity Layer region: 85% - 100% */}
+            <div style={{ width: "15%" }} className="text-center">
+              <span className="text-[14px] font-medium text-black">
+                Global Liquidity
+                <br />
+                Layer
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Button */}
+        <div className="flex justify-center">
+          <Link
+            href="/use-case"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
+          >
+            Click it
+            <Image src="/icons/arrow.svg" alt="arrow" width={14} height={14} />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
