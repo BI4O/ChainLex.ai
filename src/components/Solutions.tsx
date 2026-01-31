@@ -59,11 +59,37 @@ function FeatureIcon({ type, isActive }: { type: string; isActive: boolean }) {
   );
 }
 
-// 计算每个产品激活到哪个 feature index
-const productActiveIndex: Record<string, number> = {
-  LexStudio: 2,    // jurisdictions (index 2)
-  LexOracle: 7,    // risk (index 7)
-  LexEnforcer: 11  // offchain (index 11, 最后一个)
+// 每个产品激活的 feature icons
+const productActiveFeatures: Record<string, string[]> = {
+  LexStudio: [
+    "consultation",
+    "diligence",
+    "jurisdictions",
+    "documents",
+    "contract",
+    "profit",
+    "exception",
+    "onchain",
+    "offchain"
+  ],
+  LexOracle: [
+    "contract",
+    "confirmation",
+    "sync",
+    "risk",
+    "profit",
+    "onchain",
+    "offchain"
+  ],
+  LexEnforcer: [
+    "contract",
+    "sync",
+    "risk",
+    "profit",
+    "exception",
+    "onchain",
+    "offchain"
+  ]
 };
 
 export default function Solutions() {
@@ -74,10 +100,10 @@ export default function Solutions() {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="mb-12">
-          <h2 className="font-[var(--font-playfair)] text-[48px] font-semibold text-black mb-4">
+          <h2 className="text-[600] text-[48px] font-bodoni text-black mb-4">
             How We Solve Pain Points?
           </h2>
-          <p className="text-[#00000080] text-[18px]">
+          <p className="text-[#00000080] text-[18px] font-inter">
             End-to-End Lifecycle Compliance Platform
           </p>
         </div>
@@ -90,9 +116,8 @@ export default function Solutions() {
               <div
                 key={product.name}
                 className="w-[412px] overflow-hidden cursor-pointer transition-all duration-300"
-                onClick={() =>
-                  setSelectedCard(isSelected ? null : product.name)
-                }
+                onMouseEnter={() => setSelectedCard(product.name)}
+                onMouseLeave={() => setSelectedCard(null)}
               >
                 {/* Card Image Area */}
                 <div
@@ -116,21 +141,21 @@ export default function Solutions() {
                   }`}
                 >
                   <h3
-                    className={`text-[24px] font-[700] mb-1 transition-colors duration-300 ${
+                    className={`text-[24px] font-[700] mb-1 font-funnel transition-colors duration-300 ${
                       isSelected ? "text-white" : "text-black"
                     }`}
                   >
                     {product.name}
                   </h3>
                   <p
-                    className={`text-sm mb-4 transition-colors duration-300 ${
+                    className={`mb-4 font-inter transition-colors duration-300 ${
                       isSelected ? "text-[#FFFFFFCC]" : "text-[#324998]"
                     }`}
                   >
                     {product.subtitle}
                   </p>
                   <p
-                    className={`text-[18px] transition-colors duration-300 ${
+                    className={`text-[18px] font-inter transition-colors duration-300 ${
                       isSelected ? "text-[#FFFFFFCC]" : "text-[#000000CC]"
                     }`}
                   >
@@ -151,27 +176,52 @@ export default function Solutions() {
               style={{ left: "50px", right: "50px" }}
             />
 
-            {/* Animated Progress Line - 黑色传输动画线 */}
-            {selectedCard && (
-              <div
-                className="absolute top-[18px] h-[2px] bg-black origin-left"
-                style={{
-                  left: "50px",
-                  width: `calc((100% - 100px) * ${(productActiveIndex[selectedCard] || 0) / (features.length - 1)})`,
-                  transition: "width 0.8s ease-out"
-                }}
-              >
-                {/* 传输动画光点 */}
-                <div
-                  className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-black rounded-full animate-pulse"
-                  style={{ boxShadow: "0 0 8px rgba(0,0,0,0.5)" }}
-                />
-              </div>
-            )}
+            {/* Animated Flow - 每个点对点的流动短线段 */}
+            {selectedCard &&
+              (() => {
+                const activeIcons = productActiveFeatures[selectedCard] || [];
+                const activeIndices = features
+                  .map((f, i) => (activeIcons.includes(f.icon) ? i : -1))
+                  .filter((i) => i !== -1);
 
-            {features.map((feature, index) => {
-              const activeIndex = selectedCard ? (productActiveIndex[selectedCard] ?? -1) : -1;
-              const isActive = index <= activeIndex;
+                if (activeIndices.length < 2) return null;
+
+                // 生成相邻点之间的线段
+                const segments: { start: number; end: number }[] = [];
+                for (let i = 0; i < activeIndices.length - 1; i++) {
+                  segments.push({
+                    start: activeIndices[i],
+                    end: activeIndices[i + 1]
+                  });
+                }
+
+                return segments.map((segment, idx) => (
+                  <div
+                    key={idx}
+                    className="absolute top-[18px] h-[2px] overflow-hidden"
+                    style={{
+                      left: `calc(50px + (100% - 100px) * ${segment.start / (features.length - 1)})`,
+                      width: `calc((100% - 100px) * ${(segment.end - segment.start) / (features.length - 1)})`
+                    }}
+                  >
+                    {/* 流动的短黑线 */}
+                    <div
+                      className="absolute top-0 h-full w-[30px] bg-black rounded-full animate-flow-line"
+                      style={{
+                        animationDelay: `${idx * 0.15}s`
+                      }}
+                    />
+                  </div>
+                ));
+              })()}
+
+            {features.map((feature) => {
+              const activeIcons = selectedCard
+                ? productActiveFeatures[selectedCard] || []
+                : [];
+              const isActive = activeIcons.includes(feature.icon);
+              // 计算在激活列表中的顺序位置
+              const activeOrder = activeIcons.indexOf(feature.icon);
 
               return (
                 <div
@@ -185,13 +235,15 @@ export default function Solutions() {
                         : "bg-white border border-[#E0E0E0]"
                     }`}
                     style={{
-                      transitionDelay: isActive ? `${index * 80}ms` : "0ms"
+                      transitionDelay: isActive
+                        ? `${activeOrder * 60}ms`
+                        : "0ms"
                     }}
                   >
                     <FeatureIcon type={feature.icon} isActive={isActive} />
                   </div>
                   <span
-                    className={`text-xs leading-tight max-w-[100px] transition-colors duration-300 ${
+                    className={`text-[12px] font-inter leading-tight max-w-[100px] transition-colors duration-300 ${
                       isActive ? "text-black font-medium" : "text-gray-600"
                     }`}
                   >

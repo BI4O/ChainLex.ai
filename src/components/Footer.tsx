@@ -13,14 +13,14 @@ const navLinks = [
 const socialLinks = [
   {
     name: "Email",
-    href: "mailto:contact@chainlex.io",
+    href: "mailto:lee@chainlex.ai",
     icon: (
       <Image src="/icons/email.svg" alt="Email Icon" width={32} height={32} />
     )
   },
   {
     name: "X (Twitter)",
-    href: "https://x.com/chainlex",
+    href: "https://x.com/ChainLex_ai",
     icon: <Image src="/icons/twitter.svg" alt="X Icon" width={32} height={32} />
   },
   {
@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Right Section: Contact + Social */}
           <div className="flex items-center gap-6">
-            <span className="text-white/80">Contact us</span>
+            <span className="font-inter text-white/50">Contact us</span>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
                 <Link
@@ -83,36 +83,45 @@ export default function Footer() {
             <div key={link.name} className="flex items-center gap-8">
               <Link
                 href={link.href}
-                className="text-white/80 hover:text-white transition-colors"
+                className="font-inter text-white/50 hover:text-white transition-colors"
               >
                 {link.name}
               </Link>
               {index < navLinks.length - 1 && (
-                <span className="text-white/30">|</span>
+                <span className="text-white/16">|</span>
               )}
             </div>
           ))}
         </div>
 
         {/* Disclaimer */}
-        <div className="text-white/50 text-[12px] leading-relaxed">
-          <p>
-            Crypto services are provided by Zero Hash and are not associated
-            with Securitize Markets, LLC or its affiliates. Crypto assets are
-            not protected by the Securities Investor Protection Corporation
-            (SIPC), under the Securities Investor Protection Act (SIPA), or by
-            federal securities laws. SIPC protection does not apply to funds
-            held at SIPC-member broker-dealers if they are unrelated to the
-            purchase or sale of eligible securities, intended for buying certain
-            crypto assets not recognized as &quot;securities&quot; under SIPA,
-            or transferred to a crypto asset platform. Crypto assets are neither
-            cash nor cash equivalents and are not covered by the Federal Deposit
-            Insurance Corporation (FDIC). The value of crypto assets is subject
-            to significant market volatility. There is an increased risk of
-            fraud or cyber attack associated with crypto assets and other forms
-            of virtual currency. Zero Hash LLC and Zero Hash Liquidity Services
-            are licensed to engage in Virtual Currency Business Activity by the
-            New York State Department of Financial Services.
+        <div className="text-white/50 leading-relaxed">
+          <p className="weight-[500]">About Us</p>
+          <p className="font-inter mb-4">
+            Chainlex builds the first cross-chain, cross-protocol, and
+            cross-jurisdictional compliance layer for RWAs. Through LexStudio,
+            LexOracle, andl LexEnforcer, we transform static paper assets into
+            liquid, programmable, and legally enforceable digital assets.
+          </p>
+          <p className="font-inter weight-[500]">Legal Disclaimer</p>
+          <p className="font-inter">
+            1. No Investment Advice. The information provided on this website is
+            for general informational purposes only and does not constitute
+            financial,l legal, tax, or investment advice. You should not rely on
+            this information as a basis for making any investment decisions.
+            Please consult with al professional licensed advisor before engaging
+            in any financial activities.d2. Regulatory Compliance. Chainlex
+            operates in strict adherence to applicable regulatory frameworks,
+            including but not limited to US SEC (Regl D/S), EU MiCA, and HK SFC
+            guidelines. However, the regulatory landscape for digital assets is
+            evolving. It is the user's responsibility to ensurel that their use
+            of Chainlex services complies with the laws and regulations of their
+            specific jurisdiction.3. Technology Provider. Chainlex is a software
+            development and technology infrastructure company. We are not a
+            bank, asset manager, orl regulated exchange. Our protocols are
+            designed to assist issuers in achieving compliance, but Chainlex
+            does not guarantee the value, liquidity,l or security of the
+            underlving assets
           </p>
         </div>
       </div>

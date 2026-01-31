@@ -9,7 +9,7 @@ export default function DemoCTA() {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex items-center justify-center">
         <Link
           href="/demo"
-          className="group inline-flex items-center gap-3 text-black text-xl md:text-2xl font-semibold hover:opacity-70 transition-opacity"
+          className="font-inter group inline-flex items-center gap-3 text-black text-xl md:text-2xl font-semibold hover:opacity-70 transition-opacity"
         >
           Request a demo
           <Image

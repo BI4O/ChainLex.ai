@@ -24,13 +24,13 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-6">
         {/* Main Title */}
-        <h1 className="font-[var(--font-playfair)] text-5xl text-[110px] text-white text-center mb-4">
+        <h1 className="font-bodoni text-[110px] text-white text-center mb-4">
           Compliance,Codified.
         </h1>
 
         {/* Subtitle */}
         <p className="text-white/70 text-sm text-center mb-30 max-w-xl text-[18px]">
-          The AI-Driven Compliance Infrastructure for Tokenized Assets
+          The AI-Driven Compliance Infrastructure for RWA
         </p>
 
         {/* CTA Buttons */}

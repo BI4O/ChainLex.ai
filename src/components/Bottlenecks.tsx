@@ -27,7 +27,7 @@ const bottlenecksData = [
     id: "03",
     title: "The Transparency Paradox.",
     description:
-      "Smart contracts are immutable code, but they lack legal enforceability. We fuse code with courts.",
+      "The question of how to prove ownership while protecting commercial privacy stands as a core obstacle to institutions' large-scale participation in the market.",
     icon: "transparency",
     color: "#F1F6FDCC",
     tabOffset: 200
@@ -36,19 +36,19 @@ const bottlenecksData = [
     id: "04",
     title: "The Enforcement Vacuum.",
     description:
-      "Smart contracts are immutable code, but they lack legal enforceability. We fuse code with courts.",
+      "If on-chain code cannot drive real–world legal actions, ownership confirmation will remain merely at the digital level.",
     icon: "enforcement",
     color: "#FFFFFF",
     tabOffset: 300
   }
 ];
 
-// Placeholder icons - 需要替换为实际图标
+// Placeholder
 function CardIcon({ type }: { type: string }) {
   const icons: Record<string, React.ReactNode> = {
     jurisdictions: (
       <Image
-        src="/icons/jurisdictions.svg"
+        src="/icons/jurisdictions-icon.svg"
         alt="jurisdictions"
         width={64}
         height={64}
@@ -97,14 +97,14 @@ export default function Bottlenecks() {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
             {/* Left Content */}
             <div className="lg:w-[40%]">
-              <h2 className="font-[var(--font-playfair)] text-[48px] font-semibold text-black leading-tight mb-6">
+              <h2 className="font-bodoni text-[48px] font-semibold text-black leading-tight mb-6">
                 Four Bottlenecks
                 <br />
                 Holding Back $16
                 <br />
                 Trillion in Liquidity.
               </h2>
-              <p className="text-gray-600 text-[18px] max-w-md leading-relaxed">
+              <p className="text-[#00000080] text-[18px] font-inter">
                 Over $16 trillion in assets are constrained by real-world
                 conditions, leaving their potential unrealized.
               </p>
@@ -251,12 +251,12 @@ function BottleneckCard({
         </div>
 
         {/* Title */}
-        <h3 className="text-2xl md:text-[28px] font-semibold text-black mb-4 leading-tight">
+        <h3 className="text-[32px] text-black mb-4 weight-[700] font-funnel">
           {item.title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-500 text-base leading-relaxed max-w-md">
+        <p className="text-[#00000080] text-[16px] font-inter">
           {item.description}
         </p>
       </motion.div>

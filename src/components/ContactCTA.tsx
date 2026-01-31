@@ -12,7 +12,7 @@ export default function ContactCTA() {
             href="/contact"
             className="group inline-flex items-center gap-2 text-[24px] font-semibold text-black"
           >
-            <span className="relative pb-2">
+            <span className="font-inter weight-[600] font-semibold text-[32px] relative pb-2">
               Contact us to get a tailored solution
               {/* Half-width underline */}
               <span className="absolute bottom-0 left-0 w-1/2 h-[2px] bg-black group-hover:bg-gray-500 transition-colors" />

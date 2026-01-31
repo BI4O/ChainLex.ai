@@ -33,7 +33,7 @@ export default function Team() {
     <section className="bg-[#f5f7fa] py-20 h-[1080px]">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         {/* Title */}
-        <h2 className="font-[var(--font-playfair)] text-[48px] font-semibold text-black mb-55">
+        <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-55">
           Born at the Convergence of Law and Code.
         </h2>
 

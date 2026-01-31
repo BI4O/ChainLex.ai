@@ -32,7 +32,7 @@ export default function Architecture() {
     <section className="bg-[#f5f7fa] py-20 lg:py-32">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         {/* Header */}
-        <h2 className="font-[var(--font-playfair)] text-3xl md:text-4xl lg:text-5xl text-black mb-12">
+        <h2 className="font-bodoni text-[48px] weight-[600] text-black mb-12">
           The Architecture of Trust
         </h2>
 
@@ -86,13 +86,13 @@ export default function Architecture() {
             />
             {/* Layer 3: 文本内容 */}
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
-              <h3 className="text-[24px] font-bold text-white mb-1">
+              <h3 className="font-funnel text-[24px] weight-[700] text-white mb-1">
                 {architectureItems[1].title}
               </h3>
-              <p className="text-[#FFFFFF80] text-sm mb-4">
+              <p className="font-inter text-[#FFFFFF] opacity-50 mb-4">
                 {architectureItems[1].subtitle}
               </p>
-              <p className="text-[#FFFFFFCC] text-[16px] leading-relaxed">
+              <p className="font-inter text-[#FFFFFFCC] text-[18px]">
                 {architectureItems[1].description}
               </p>
             </div>
@@ -117,13 +117,13 @@ export default function Architecture() {
             />
             {/* Layer 3: 文本内容 - 左侧 */}
             <div className="absolute inset-0 p-10 flex flex-col justify-center max-w-[50%]">
-              <h3 className="text-[24px] font-bold text-white mb-1">
+              <h3 className="font-funnel text-[24px] font-bold text-white mb-1">
                 {architectureItems[2].title}
               </h3>
-              <p className="text-[#FFFFFF80] text-sm mb-4">
+              <p className="font-inter text-[#FFFFFF80] text-sm mb-4">
                 {architectureItems[2].subtitle}
               </p>
-              <p className="text-[#FFFFFFCC] text-[16px] leading-relaxed">
+              <p className="font-inter text-[#FFFFFFCC] text-[16px] leading-relaxed">
                 {architectureItems[2].description}
               </p>
             </div>
@@ -134,22 +134,10 @@ export default function Architecture() {
         <div className="flex justify-center">
           <Link
             href="/whitepaper"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
+            className="text-[20px] weight-[500] font-inter inline-flex items-center gap-2 px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
           >
             Whitepaper
-            <svg
-              className="w-4 h-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M7 17L17 7M17 7H7M17 7V17"
-              />
-            </svg>
+            <Image src="/icons/arrow.svg" alt="arrow" width={14} height={14} />
           </Link>
         </div>
       </div>

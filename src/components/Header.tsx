@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navItems = [
-  { label: "Portfolio", href: "/portfolio", hasDropdown: true },
-  { label: "Compliance Intelligence", href: "/compliance", hasDropdown: true },
+  { label: "Platfotm", href: "/platfotm", hasDropdown: true },
+  { label: "Ecosystem", href: "/ecosystem", hasDropdown: true },
   { label: "Research", href: "/research", hasDropdown: true },
   { label: "About", href: "/about", hasDropdown: true }
 ];
@@ -25,12 +25,14 @@ export default function Header() {
               alt="ChainLex Logo"
               width={32}
               height={32}
+              priority
             />
             <Image
               src="/icons/logo-text.svg"
               alt="ChainLex"
               width={150}
               height={24}
+              priority
             />
           </Link>
 

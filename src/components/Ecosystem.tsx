@@ -35,7 +35,7 @@ export default function Ecosystem() {
     <section className="bg-[#F4F7FB] py-20 lg:py-32">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         {/* Title */}
-        <h2 className="font-[var(--font-playfair)] text-[48px] font-semibold text-black mb-12">
+        <h2 className="font-bodoni text-[48px] weight-[600] text-black mb-12">
           Building the Compliance Ecosystem.
         </h2>
 
@@ -75,10 +75,10 @@ export default function Ecosystem() {
                   {isActive ? (
                     /* Expanded State */
                     <div className="transition-opacity duration-500">
-                      <h3 className="text-[24px] font-bold text-white mb-4">
+                      <h3 className="font-funnel text-[24px] weight-[700] text-white mb-4">
                         {item.title}
                       </h3>
-                      <p className="text-[#FFFFFFCC] text-[16px] leading-relaxed max-w-[600px]">
+                      <p className="font-inter text-white text-[18px] leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -114,7 +114,7 @@ export default function Ecosystem() {
         <div className="flex justify-center">
           <Link
             href="/join"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
+            className="font-inter weight-[500] text-[20px] inline-flex items-center gap-2 px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
           >
             Join us
             <Image src="/icons/arrow.svg" alt="arrow" width={14} height={14} />
