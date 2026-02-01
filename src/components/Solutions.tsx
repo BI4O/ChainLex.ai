@@ -96,8 +96,8 @@ export default function Solutions() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
   return (
-    <section className="bg-[#f5f7fa] py-20 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <section className="bg-[#f5f7fa] px-[16%] py-20 lg:py-32">
+      <div className="max-w-[1440px]">
         {/* Header */}
         <div className="mb-12">
           <h2 className="text-[600] text-[48px] font-bodoni text-black mb-4">

@@ -115,7 +115,7 @@ function CarouselRow<T extends { name: string; icon?: string | null }>({
 export default function Compliance() {
   return (
     <section className="bg-[#FFFFFF] py-20 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+      <div className="px-[16%]">
         {/* Title */}
         <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-20">
           Write once, Compliance everywhere.
@@ -188,21 +188,21 @@ export default function Compliance() {
 
         {/* Cross Labels */}
         <div className="flex items-center justify-center gap-6 mb-8">
-          <span className="font-inter text-[24px] weight-[600] text-black">
+          <span className="font-funnel text-[24px] weight-[600] font-semibold text-black">
             Cross Chain
           </span>
           <span className="bg-[#0000004D] rounded-full w-[6px] h-[6px]"></span>
-          <span className="font-inter text-[24px] weight-[600] text-black">
+          <span className="font-funnel text-[24px] weight-[600] font-semibold text-black">
             Cross Protocol
           </span>
           <span className="bg-[#0000004D] rounded-full w-[6px] h-[6px]"></span>
-          <span className="font-inter text-[24px] weight-[600] text-black">
+          <span className="font-funnel text-[24px] weight-[600] font-semibold text-black">
             Cross Jurisdictional
           </span>
         </div>
 
         {/* Description */}
-        <p className="font-inter text-center text-[#000000CC] text-[18px] leading-relaxed max-w-[1000px] mx-auto">
+        <p className="font-inter text-center text-[#000000CC] text-[18px] leading-relaxed mx-[60px]">
           We are well aware that true liquidity should not be confined by the
           boundaries of technology stacks or the walls of jurisdictions.
           Chainlex has built a compliance layer with &apos;global

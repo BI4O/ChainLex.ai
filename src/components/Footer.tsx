@@ -40,7 +40,7 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-12">
+      <div className="px-[16%] py-12">
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8">
           {/* Logo */}
@@ -100,28 +100,28 @@ export default function Footer() {
           <p className="font-inter mb-4">
             Chainlex builds the first cross-chain, cross-protocol, and
             cross-jurisdictional compliance layer for RWAs. Through LexStudio,
-            LexOracle, andl LexEnforcer, we transform static paper assets into
+            LexOracle, and LexEnforcer, we transform static paper assets into
             liquid, programmable, and legally enforceable digital assets.
           </p>
           <p className="font-inter weight-[500]">Legal Disclaimer</p>
           <p className="font-inter">
-            1. No Investment Advice. The information provided on this website is
+            1. No Investment Advice.The information provided on this website is
             for general informational purposes only and does not constitute
-            financial,l legal, tax, or investment advice. You should not rely on
+            financial, legal, tax, or investment advice. You should not rely on
             this information as a basis for making any investment decisions.
-            Please consult with al professional licensed advisor before engaging
-            in any financial activities.d2. Regulatory Compliance. Chainlex
+            Please consult with a professional licensed advisor before engaging
+            in any financial activities. 2.Regulatory Compliance.Chainlex
             operates in strict adherence to applicable regulatory frameworks,
-            including but not limited to US SEC (Regl D/S), EU MiCA, and HK SFC
+            including but not limited to US SEC (Reg D/S), EU MiCA, and HK SFC
             guidelines. However, the regulatory landscape for digital assets is
-            evolving. It is the user's responsibility to ensurel that their use
+            evolving. It is the user's responsibility to ensure that their use
             of Chainlex services complies with the laws and regulations of their
-            specific jurisdiction.3. Technology Provider. Chainlex is a software
+            specific jurisdiction. 3.Technology Provider.Chainlex is a software
             development and technology infrastructure company. We are not a
-            bank, asset manager, orl regulated exchange. Our protocols are
+            bank, asset manager, or regulated exchange. Our protocols are
             designed to assist issuers in achieving compliance, but Chainlex
-            does not guarantee the value, liquidity,l or security of the
-            underlving assets
+            does not guarantee the value, liquidity, or security of the
+            underlying assets.
           </p>
         </div>
       </div>

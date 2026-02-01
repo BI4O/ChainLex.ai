@@ -6,16 +6,14 @@ import Image from "next/image";
 export default function ContactCTA() {
   return (
     <section className="bg-white py-20 lg:py-24">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+      <div className="px-[16%]">
         <div className="flex justify-center">
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 text-[24px] font-semibold text-black"
+            className="group relative inline-flex items-center gap-2 pb-1"
           >
-            <span className="font-inter weight-[600] font-semibold text-[32px] relative pb-2">
+            <span className="font-inter weight-[600] font-semibold text-[32px] text-black">
               Contact us to get a tailored solution
-              {/* Half-width underline */}
-              <span className="absolute bottom-0 left-0 w-1/2 h-[2px] bg-black group-hover:bg-gray-500 transition-colors" />
             </span>
             <Image
               src="/icons/arrow-black.svg"
@@ -23,6 +21,8 @@ export default function ContactCTA() {
               width={32}
               height={32}
             />
+            {/* Hover underline */}
+            <span className="absolute bottom-0 left-0 w-full h-[3px] bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
           </Link>
         </div>
       </div>

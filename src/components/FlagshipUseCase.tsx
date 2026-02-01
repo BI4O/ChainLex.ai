@@ -45,6 +45,7 @@ const icons = [
 export default function FlagshipUseCase() {
   const [isActivated, setIsActivated] = useState(false);
   const [activeIconIndex, setActiveIconIndex] = useState(-1);
+  const [activeModuleIndex, setActiveModuleIndex] = useState(-1);
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
 
   const clearAllTimeouts = () => {
@@ -60,16 +61,21 @@ export default function FlagshipUseCase() {
       // 重置状态
       setIsActivated(false);
       setActiveIconIndex(-1);
+      setActiveModuleIndex(-1);
       return;
     }
 
     // 开始动画序列
     setIsActivated(true);
 
-    // 依次激活图标
-    timeoutsRef.current.push(setTimeout(() => setActiveIconIndex(0), 100));
-    timeoutsRef.current.push(setTimeout(() => setActiveIconIndex(1), 350));
-    timeoutsRef.current.push(setTimeout(() => setActiveIconIndex(2), 600));
+    // 依次激活 (总时长约4秒)
+    // 顺序: 第一个图标 -> LexStudio -> LexOracle -> LexEnforcer -> 第二个图标 -> 第三个图标
+    timeoutsRef.current.push(setTimeout(() => setActiveIconIndex(0), 0)); // 第一个图标
+    timeoutsRef.current.push(setTimeout(() => setActiveModuleIndex(0), 700)); // LexStudio
+    timeoutsRef.current.push(setTimeout(() => setActiveModuleIndex(1), 1400)); // LexOracle
+    timeoutsRef.current.push(setTimeout(() => setActiveModuleIndex(2), 2100)); // LexEnforcer
+    timeoutsRef.current.push(setTimeout(() => setActiveIconIndex(1), 2800)); // 第二个图标
+    timeoutsRef.current.push(setTimeout(() => setActiveIconIndex(2), 3500)); // 第三个图标
   };
 
   return (
@@ -79,7 +85,7 @@ export default function FlagshipUseCase() {
         <Image src="/images/flagship-bg.png" alt="Flagship background" fill />
       </div>
 
-      <div className="relative max-w-[1440px] mx-auto px-6 lg:px-12">
+      <div className="relative px-[16%]">
         {/* Header */}
         <div className="mb-8">
           <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-2">
@@ -124,61 +130,66 @@ export default function FlagshipUseCase() {
 
           {/* Three Module Cards */}
           <div className="flex gap-4 justify-center mt-2">
-            {modules.map((module, index) => (
-              <div key={index} className="flex flex-col items-center">
-                {/* Module Card */}
-                <div
-                  className={`font-inter px-6 py-3 rounded-xl weight-[600] text-[20px] font-semibold min-w-[190px] flex items-center justify-center relative transition-all duration-500 h-[60px] ${
-                    isActivated ? "text-white" : "text-black bg-white shadow-sm"
-                  }`}
-                  style={{
-                    background: isActivated
-                      ? "linear-gradient(180deg, #324998 0%, #1a2a5e 100%)"
-                      : "white"
-                  }}
-                >
-                  {module.name}
-                  {/* Triangle pointer - only show when activated */}
-                  {isActivated && (
-                    <div
-                      className="absolute left-1/2 -translate-x-1/2 -bottom-[7px] w-6 h-2"
-                      style={{
-                        background: "#1a2a5e",
-                        clipPath: "polygon(50% 100%, 0% 0%, 100% 0%)"
-                      }}
-                    />
-                  )}
-                </div>
+            {modules.map((module, index) => {
+              const isModuleActive = activeModuleIndex >= index;
+              return (
+                <div key={index} className="flex flex-col items-center">
+                  {/* Module Card */}
+                  <div
+                    className={`font-inter px-6 py-3 rounded-xl weight-[600] text-[20px] font-semibold min-w-[190px] flex items-center justify-center relative transition-all duration-500 h-[60px] ${
+                      isModuleActive
+                        ? "text-white"
+                        : "text-black bg-white shadow-sm"
+                    }`}
+                    style={{
+                      background: isModuleActive
+                        ? "linear-gradient(180deg, #324998 0%, #1a2a5e 100%)"
+                        : "white"
+                    }}
+                  >
+                    {module.name}
+                    {/* Triangle pointer - only show when activated */}
+                    {isModuleActive && (
+                      <div
+                        className="absolute left-1/2 -translate-x-1/2 -bottom-[7px] w-6 h-2"
+                        style={{
+                          background: "#1a2a5e",
+                          clipPath: "polygon(50% 100%, 0% 0%, 100% 0%)"
+                        }}
+                      />
+                    )}
+                  </div>
 
-                {/* Items List - 保留占位空间，只切换可见性 */}
-                <div
-                  className={`mt-6 space-y-2 transition-opacity duration-500 ${
-                    isActivated ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {module.items.map((item, itemIndex) => (
-                    <div
-                      key={itemIndex}
-                      className="flex items-center gap-1 text-[14px] text-[#000000CC] bg-[#FFFFFF80] rounded-[10px] px-4 py-2 w-[190px] relative"
-                      style={{
-                        transitionDelay: `${itemIndex * 100}ms`
-                      }}
-                    >
-                      <span className="font-inter flex-1 flex items-center justify-between">
-                        {item}
-                        <svg
-                          className="w-5 h-5 text-[#4CAF50] flex-shrink-0 absolute right-[5px] bottom-[8px]"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                        </svg>
-                      </span>
-                    </div>
-                  ))}
+                  {/* Items List - 保留占位空间，只切换可见性 */}
+                  <div
+                    className={`mt-6 space-y-2 transition-opacity duration-500 ${
+                      isModuleActive ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {module.items.map((item, itemIndex) => (
+                      <div
+                        key={itemIndex}
+                        className="flex items-center gap-1 text-[14px] text-[#000000CC] bg-[#FFFFFF80] rounded-[10px] px-4 py-2 w-[190px] relative"
+                        style={{
+                          transitionDelay: `${itemIndex * 100}ms`
+                        }}
+                      >
+                        <span className="font-inter flex-1 flex items-center justify-between">
+                          {item}
+                          <svg
+                            className="w-5 h-5 text-[#4CAF50] flex-shrink-0 absolute right-[5px] bottom-[8px]"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                          </svg>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Dotted Line Arrow */}

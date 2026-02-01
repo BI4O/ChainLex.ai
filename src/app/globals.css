@@ -67,3 +67,17 @@ html {
 .animate-marquee-right {
   animation: marquee-right linear infinite;
 }
+
+/* Logo 无限滚动动画 */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 20s linear infinite;
+}

@@ -30,7 +30,7 @@ const architectureItems = [
 export default function Architecture() {
   return (
     <section className="bg-[#f5f7fa] py-20 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+      <div className="px-[16%]">
         {/* Header */}
         <h2 className="font-bodoni text-[48px] weight-[600] text-black mb-12">
           The Architecture of Trust
@@ -56,13 +56,13 @@ export default function Architecture() {
             />
             {/* Layer 3: 文本内容 */}
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
-              <h3 className="text-[24px] font-bold text-white mb-1">
+              <h3 className="font-funnel text-[24px] font-bold text-white mb-1">
                 {architectureItems[0].title}
               </h3>
-              <p className="text-[#FFFFFF80] text-sm mb-4">
+              <p className="font-inter text-[#FFFFFF80] text-sm mb-4">
                 {architectureItems[0].subtitle}
               </p>
-              <p className="text-[#FFFFFFCC] text-[16px] leading-relaxed">
+              <p className="font-inter text-[#FFFFFFCC] text-[16px] leading-relaxed">
                 {architectureItems[0].description}
               </p>
             </div>

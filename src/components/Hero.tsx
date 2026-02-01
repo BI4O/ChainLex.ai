@@ -40,7 +40,7 @@ export default function Hero() {
             href="/platform"
             className="group relative flex items-center gap-2 pb-1"
           >
-            <span className="text-white text-[20px] font-bold">
+            <span className="font-inter text-white text-[20px] font-bold">
               Open Platform
             </span>
             <Image src="/icons/arrow.svg" alt="arrow" width={24} height={24} />
@@ -53,7 +53,7 @@ export default function Hero() {
             href="/demo"
             className="group relative flex items-center gap-2 pb-1"
           >
-            <span className="text-white text-[20px] font-bold">
+            <span className="font-inter text-white text-[20px] font-bold">
               Request a demo
             </span>
             <Image src="/icons/arrow.svg" alt="arrow" width={24} height={24} />

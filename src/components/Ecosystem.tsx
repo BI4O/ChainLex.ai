@@ -33,7 +33,7 @@ export default function Ecosystem() {
 
   return (
     <section className="bg-[#F4F7FB] py-20 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+      <div className="px-[16%]">
         {/* Title */}
         <h2 className="font-bodoni text-[48px] weight-[600] text-black mb-12">
           Building the Compliance Ecosystem.
@@ -113,7 +113,7 @@ export default function Ecosystem() {
         {/* Join Us Button */}
         <div className="flex justify-center">
           <Link
-            href="/join"
+            href="mailto:lee@chainlex.ai"
             className="font-inter weight-[500] text-[20px] inline-flex items-center gap-2 px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
           >
             Join us
