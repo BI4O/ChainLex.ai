@@ -70,7 +70,7 @@ export default function Research() {
         </h2>
 
         {/* Research Cards Carousel */}
-        <div className="relative flex items-center">
+        <div className="relative flex items-center justify-center">
           {/* Left Arrow */}
           <button
             onClick={handlePrev}
@@ -125,7 +125,7 @@ export default function Research() {
                     />
                   </div>
                   {/* Card Footer */}
-                  <div className="bg-white px-6 py-8 flex items-center justify-between">
+                  <div className="bg-white px-6 py-8 flex items-center justify-between ">
                     <h3 className="font-funnel text-[24px] weight-[700] font-bold text-black pr-4 flex-1">
                       {item.title}
                     </h3>

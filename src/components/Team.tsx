@@ -34,7 +34,7 @@ export default function Team() {
       <div className="px-[12%]">
         {/* Title */}
         <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-55">
-          Born at the Convergence of Law and Code.
+          Born at the Convergence of&nbsp;&nbsp;Law and Code.
         </h2>
 
         {/* Team Members */}
@@ -66,7 +66,7 @@ export default function Team() {
               <Link
                 href="https://x.com/bi4o1995"
                 target="_blank"
-                className="inline-block mt-4"
+                className="inline-block mt-4 relative z-5"
               >
                 <Image
                   src="/icons/twitter1.svg"
@@ -113,7 +113,7 @@ export default function Team() {
               <Link
                 href="https://x.com/pentiumtime"
                 target="_blank"
-                className="inline-block mt-4"
+                className="inline-block mt-4 relative z-5"
               >
                 <Image
                   src="/icons/twitter1.svg"

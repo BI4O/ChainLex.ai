@@ -97,7 +97,7 @@ export default function Solutions() {
 
   return (
     <section className="bg-[#f5f7fa] px-[12%] py-20 lg:py-32">
-      <div className="max-w-[1440px]">
+      <div>
         {/* Header */}
         <div className="mb-12">
           <h2 className="text-[600] text-[48px] font-bodoni text-black mb-4">
@@ -109,7 +109,7 @@ export default function Solutions() {
         </div>
 
         {/* Product Cards */}
-        <div className="flex gap-6 mb-16">
+        <div className="flex justify-center gap-6 mb-16">
           {products.map((product, index) => {
             const isSelected = selectedCard === product.name;
             return (

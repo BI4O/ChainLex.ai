@@ -77,13 +77,18 @@ export default async function ResearchDetail({
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src={research.image}
+            src="/images/research-bg.png"
             alt={research.title}
             fill
             className="object-cover"
           />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/60" />
+          {/* Mask Overlay */}
+          <Image
+            src="/images/mask.png"
+            alt="mask"
+            fill
+            className="object-cover"
+          />
         </div>
 
         {/* Content */}

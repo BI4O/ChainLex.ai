@@ -86,7 +86,7 @@ export default function Architecture() {
             />
             {/* Layer 3: 文本内容 */}
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
-              <h3 className="font-funnel text-[24px] weight-[700] text-white mb-1">
+              <h3 className="font-funnel font-bold text-[24px] weight-[700] text-white mb-1">
                 {architectureItems[1].title}
               </h3>
               <p className="font-inter text-[#FFFFFF] opacity-50 mb-4">

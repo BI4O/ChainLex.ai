@@ -13,7 +13,7 @@ export default function FinalStatement() {
               This time,
             </p>
             <p className="weight-[600] font-inter text-[32px] lg:text-[42px] font-semibold text-black leading-tight">
-              compliance is no longer a barrier to asset tokenization.
+              compliance is no longer a barrier to RWA.
             </p>
           </div>
         </div>

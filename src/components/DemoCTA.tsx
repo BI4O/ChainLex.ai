@@ -19,7 +19,7 @@ export default function DemoCTA() {
             height={24}
           />
           {/* Hover underline */}
-          <span className="absolute bottom-0 left-0 w-full h-[3px] bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+          <span className="absolute bottom-0 left-0 h-[3px] bg-black w-0 group-hover:w-full transition-all duration-300 ease-out" />
         </Link>
       </div>
     </section>
