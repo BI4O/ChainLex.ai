@@ -92,7 +92,7 @@ export default function Bottlenecks() {
       className="bg-[#f5f7fa] relative"
       style={{ height: `${cardHeight * bottlenecksData.length + 800}px` }}
     >
-      <div className="px-[16%] sticky top-0 min-h-screen flex items-start pt-[15vh] overflow-hidden">
+      <div className="px-[12%] sticky top-0 min-h-screen flex items-start pt-[15vh] overflow-hidden">
         <div className="max-w-[1440px] w-full">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
             {/* Left Content */}

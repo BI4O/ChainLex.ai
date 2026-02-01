@@ -33,7 +33,7 @@ export default function Ecosystem() {
 
   return (
     <section className="bg-[#F4F7FB] py-20 lg:py-32">
-      <div className="px-[16%]">
+      <div className="px-[12%]">
         {/* Title */}
         <h2 className="font-bodoni text-[48px] weight-[600] text-black mb-12">
           Building the Compliance Ecosystem.

@@ -40,7 +40,7 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="px-[16%] py-12">
+      <div className="px-[12%] py-12">
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8">
           {/* Logo */}

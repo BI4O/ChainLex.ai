@@ -60,7 +60,7 @@ export default function Support() {
           }
         `}
       </style>
-      <section className="pl-[16%] bg-white py-20 lg:py-24 overflow-hidden">
+      <section className="pl-[12%] bg-white py-20 lg:py-24 overflow-hidden">
         {/* Title */}
         <h2 className="font-bodoni text-[48px] weight-[600] text-black mb-16">
           Support

@@ -30,7 +30,7 @@ const architectureItems = [
 export default function Architecture() {
   return (
     <section className="bg-[#f5f7fa] py-20 lg:py-32">
-      <div className="px-[16%]">
+      <div className="px-[12%]">
         {/* Header */}
         <h2 className="font-bodoni text-[48px] weight-[600] text-black mb-12">
           The Architecture of Trust

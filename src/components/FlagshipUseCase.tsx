@@ -85,7 +85,7 @@ export default function FlagshipUseCase() {
         <Image src="/images/flagship-bg.png" alt="Flagship background" fill />
       </div>
 
-      <div className="relative px-[16%]">
+      <div className="relative px-[12%]">
         {/* Header */}
         <div className="mb-8">
           <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-2">

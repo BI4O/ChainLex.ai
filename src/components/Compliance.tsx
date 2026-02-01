@@ -115,7 +115,7 @@ function CarouselRow<T extends { name: string; icon?: string | null }>({
 export default function Compliance() {
   return (
     <section className="bg-[#FFFFFF] py-20 lg:py-32">
-      <div className="px-[16%]">
+      <div className="px-[12%]">
         {/* Title */}
         <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-20">
           Write once, Compliance everywhere.

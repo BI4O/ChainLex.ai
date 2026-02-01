@@ -96,7 +96,7 @@ export default function Solutions() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
   return (
-    <section className="bg-[#f5f7fa] px-[16%] py-20 lg:py-32">
+    <section className="bg-[#f5f7fa] px-[12%] py-20 lg:py-32">
       <div className="max-w-[1440px]">
         {/* Header */}
         <div className="mb-12">
@@ -109,7 +109,7 @@ export default function Solutions() {
         </div>
 
         {/* Product Cards */}
-        <div className="flex flex-wrap gap-6 mb-16">
+        <div className="flex gap-6 mb-16">
           {products.map((product, index) => {
             const isSelected = selectedCard === product.name;
             return (

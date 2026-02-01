@@ -87,7 +87,7 @@ export default async function ResearchDetail({
         </div>
 
         {/* Content */}
-        <div className="relative z-10 h-full px-[16%] pt-[160px]">
+        <div className="relative z-10 h-full px-[12%] pt-[160px]">
           {/* Back Button */}
           <Link
             href="/"
@@ -115,7 +115,7 @@ export default async function ResearchDetail({
 
       {/* Content Section */}
       <section className="flex-1 bg-white py-16">
-        <div className="px-[16%]">
+        <div className="px-[12%]">
           {research.content.map((paragraph, index) => (
             <p
               key={index}

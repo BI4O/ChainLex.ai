@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function ContactCTA() {
   return (
     <section className="bg-white py-20 lg:py-24">
-      <div className="px-[16%]">
+      <div className="px-[12%]">
         <div className="flex justify-center">
           <Link
             href="/contact"

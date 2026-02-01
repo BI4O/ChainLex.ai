@@ -22,7 +22,7 @@ export default function Statement() {
 
       {/* Content - Left Side */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="px-[16%]">
+        <div className="px-[12%]">
           <p className="text-white text-[32px] weight-[600] font-inter font-semibold max-w-[600px]">
             This is not a legal problem,
             <br />

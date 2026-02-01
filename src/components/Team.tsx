@@ -31,7 +31,7 @@ const teamMembers = [
 export default function Team() {
   return (
     <section className="bg-[#f5f7fa] py-20 h-[1080px]">
-      <div className="px-[16%]">
+      <div className="px-[12%]">
         {/* Title */}
         <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-55">
           Born at the Convergence of Law and Code.

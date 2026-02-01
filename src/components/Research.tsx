@@ -63,7 +63,7 @@ export default function Research() {
 
   return (
     <section className="bg-black py-20 lg:py-32 h-[782px]">
-      <div className="px-[16%]">
+      <div className="px-[12%]">
         {/* Title */}
         <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-white mb-12">
           Research
@@ -78,7 +78,11 @@ export default function Research() {
             className="absolute -left-16 z-10 cursor-pointer disabled:cursor-default"
           >
             <Image
-              src={isAtStart ? "/icons/left-arrow-disabled.svg" : "/icons/left-arrow.svg"}
+              src={
+                isAtStart
+                  ? "/icons/left-arrow-disabled.svg"
+                  : "/icons/left-arrow.svg"
+              }
               alt="Previous"
               width={24}
               height={24}
@@ -86,7 +90,10 @@ export default function Research() {
           </button>
 
           {/* Cards Container */}
-          <div className="overflow-hidden" style={{ width: `${3 * CARD_WIDTH + 2 * GAP}px` }}>
+          <div
+            className="overflow-hidden"
+            style={{ width: `${3 * CARD_WIDTH + 2 * GAP}px` }}
+          >
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
@@ -143,7 +150,11 @@ export default function Research() {
             className="absolute -right-16 z-10 cursor-pointer disabled:cursor-default"
           >
             <Image
-              src={isAtEnd ? "/icons/right-arrow-disabled.svg" : "/icons/right-arrow.svg"}
+              src={
+                isAtEnd
+                  ? "/icons/right-arrow-disabled.svg"
+                  : "/icons/right-arrow.svg"
+              }
               alt="Next"
               width={24}
               height={24}
