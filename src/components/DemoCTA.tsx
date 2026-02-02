@@ -18,10 +18,10 @@ export default function DemoCTA() {
         `}
       </style>
       <section className="bg-white py-20 lg:py-36">
-        <div className="px-[12%] flex items-center justify-center">
+        <div className="px-6 lg:px-[12%] flex items-center justify-center">
           <Link
             href="/demo"
-            className="demo-link font-inter text-[32px] weight-[600] relative inline-flex items-center gap-3 text-black font-semibold pb-1"
+            className="demo-link font-inter text-[24px] md:text-[28px] lg:text-[32px] weight-[600] relative inline-flex items-center gap-3 text-black font-semibold pb-1"
           >
             Request a demo
             <Image

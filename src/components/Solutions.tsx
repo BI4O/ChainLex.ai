@@ -96,11 +96,11 @@ export default function Solutions() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
   return (
-    <section className="bg-[#f5f7fa] px-[12%] py-20 lg:py-32">
+    <section className="bg-[#f5f7fa] px-6 lg:px-[12%] py-20 lg:py-32">
       <div>
         {/* Header */}
         <div className="mb-12">
-          <h2 className="text-[600] text-[48px] font-bodoni text-black mb-4">
+          <h2 className="text-[600] text-[28px] sm:text-[36px] lg:text-[48px] font-bodoni text-black mb-4">
             How We Solve Pain Points?
           </h2>
           <p className="text-[#00000080] text-[18px] font-inter">
@@ -109,13 +109,13 @@ export default function Solutions() {
         </div>
 
         {/* Product Cards */}
-        <div className="flex justify-center gap-6 mb-16">
+        <div className="flex flex-col lg:flex-row justify-center gap-6 lg:gap-8 mb-16">
           {products.map((product, index) => {
             const isSelected = selectedCard === product.name;
             return (
               <div
                 key={product.name}
-                className="w-[412px] overflow-hidden cursor-pointer transition-all duration-300"
+                className="w-full max-w-[412px] lg:w-[412px] overflow-hidden cursor-pointer transition-all duration-300"
                 onMouseEnter={() => setSelectedCard(product.name)}
                 onMouseLeave={() => setSelectedCard(null)}
               >
@@ -136,7 +136,7 @@ export default function Solutions() {
 
                 {/* Card Content */}
                 <div
-                  className={`p-10 pt-6 h-[270] transition-colors duration-300 ${
+                  className={`p-6 lg:p-10 pt-4 lg:pt-6 h-[220px] lg:h-[270] transition-colors duration-300 ${
                     isSelected ? "bg-black" : "bg-white"
                   }`}
                 >
@@ -168,8 +168,8 @@ export default function Solutions() {
         </div>
 
         {/* Features Flow */}
-        <div className="pt-12 overflow-x-auto">
-          <div className="relative flex justify-between min-w-[1200px]">
+        <div className="pt-12">
+          <div className="relative flex justify-between overflow-x-auto pb-4 -mx-6 px-6 lg:mx-0 lg:px-0">
             {/* Connecting Dashed Line - 底层灰色虚线 */}
             <div
               className="absolute top-[18px] h-[2px] border-t-2 border-dashed border-[#C0C0C0]"
