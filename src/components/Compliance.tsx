@@ -48,6 +48,8 @@ function CarouselRow<T extends { name: string; icon?: string | null }>({
   visibleCount = 5,
   itemWidth = 100,
   gap = 16,
+  mobileItemWidth,
+  mobileGap,
   interval = 2000,
   direction = "left",
   renderItem
@@ -56,10 +58,25 @@ function CarouselRow<T extends { name: string; icon?: string | null }>({
   visibleCount?: number;
   itemWidth?: number;
   gap?: number;
+  mobileItemWidth?: number;
+  mobileGap?: number;
   interval?: number;
   direction?: "left" | "right";
   renderItem: (item: T) => React.ReactNode;
 }) {
+  // 检测当前是否为移动端
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   // 向右滚动时，初始位置从 items.length 开始，这样左边有内容
   const [offset, setOffset] = useState(
     direction === "right" ? items.length : 0
@@ -67,6 +84,10 @@ function CarouselRow<T extends { name: string; icon?: string | null }>({
 
   // 复制数组实现无缝轮播
   const extendedItems = [...items, ...items, ...items];
+
+  // 根据屏幕尺寸选择参数
+  const currentItemWidth = isMobile && mobileItemWidth ? mobileItemWidth : itemWidth;
+  const currentGap = isMobile && mobileGap ? mobileGap : gap;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -86,15 +107,15 @@ function CarouselRow<T extends { name: string; icon?: string | null }>({
     return () => clearInterval(timer);
   }, [items.length, interval, direction]);
 
-  const translateX = -offset * (itemWidth + gap);
-  const containerWidth = visibleCount * itemWidth + (visibleCount - 1) * gap;
+  const translateX = -offset * (currentItemWidth + currentGap);
+  const containerWidth = visibleCount * currentItemWidth + (visibleCount - 1) * currentGap;
 
   return (
     <div className="overflow-hidden mx-auto" style={{ width: containerWidth }}>
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{
-          gap: `${gap}px`,
+          gap: `${currentGap}px`,
           transform: `translateX(${translateX}px)`
         }}
       >
@@ -102,7 +123,7 @@ function CarouselRow<T extends { name: string; icon?: string | null }>({
           <div
             key={`${item.name}-${index}`}
             className="flex-shrink-0"
-            style={{ width: itemWidth }}
+            style={{ width: currentItemWidth }}
           >
             {renderItem(item)}
           </div>
@@ -115,27 +136,29 @@ function CarouselRow<T extends { name: string; icon?: string | null }>({
 export default function Compliance() {
   return (
     <section className="bg-[#FFFFFF] py-20 lg:py-32">
-      <div className="px-[12%]">
+      <div className="px-6 lg:px-[12%]">
         {/* Title */}
-        <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-20">
+        <h2 className="font-bodoni weight-[600] text-[28px] sm:text-[36px] lg:text-[48px] text-black mb-12 md:mb-20">
           Write once, Compliance everywhere.
         </h2>
 
         {/* Icons Grid with Carousel Effect */}
-        <div className="flex flex-col gap-6 mb-16">
+        <div className="flex flex-col gap-4 md:gap-6 mb-12 md:mb-16">
           {/* Row 1: Blockchains - 向左轮播 */}
-          <div className="flex justify-center">
+          <div className="flex justify-center overflow-hidden">
             <CarouselRow
               items={blockchains}
               visibleCount={5}
               itemWidth={100}
               gap={16}
+              mobileItemWidth={60}
+              mobileGap={10}
               interval={2000}
               direction="left"
               renderItem={(item) => (
-                <div className="w-[100px] h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center">
+                <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center">
                   <div
-                    className={`w-[50px] h-[50px] rounded-full ${item.color || "bg-[#000000]"} overflow-hidden relative`}
+                    className={`w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-full ${item.color || "bg-[#000000]"} overflow-hidden relative`}
                   >
                     <Image
                       src={item.icon}
@@ -150,17 +173,19 @@ export default function Compliance() {
           </div>
 
           {/* Row 2: Standards - 向右轮播 */}
-          <div className="flex justify-center">
+          <div className="flex justify-center overflow-hidden">
             <CarouselRow
               items={standards}
               visibleCount={5}
               itemWidth={100}
               gap={16}
+              mobileItemWidth={60}
+              mobileGap={10}
               interval={2500}
               direction="right"
               renderItem={(item) => (
-                <div className="w-[100px] h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center">
-                  <span className="text-[18px] text-[#000000] font-bold text-center leading-tight px-2">
+                <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center">
+                  <span className="text-[10px] md:text-[18px] text-[#000000] font-bold text-center leading-tight px-1 md:px-2">
                     {item.name}
                   </span>
                 </div>
@@ -169,22 +194,31 @@ export default function Compliance() {
           </div>
 
           {/* Row 3: Jurisdictions - 向左轮播 */}
-          <div className="flex justify-center">
+          <div className="flex justify-center overflow-hidden">
             <CarouselRow
               items={jurisdictions}
               visibleCount={5}
               itemWidth={100}
               gap={16}
+              mobileItemWidth={60}
+              mobileGap={10}
               interval={2200}
               direction="left"
               renderItem={(item) => (
-                <div className="w-[100px] h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center overflow-hidden">
+                <div className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={item.icon!}
+                    alt={item.name}
+                    width={36}
+                    height={36}
+                    className="rounded-full md:hidden"
+                  />
                   <Image
                     src={item.icon!}
                     alt={item.name}
                     width={60}
                     height={60}
-                    className="rounded-full"
+                    className="rounded-full hidden md:block"
                   />
                 </div>
               )}
@@ -193,22 +227,22 @@ export default function Compliance() {
         </div>
 
         {/* Cross Labels */}
-        <div className="flex items-center justify-center gap-6 mb-8">
-          <span className="font-funnel text-[24px] weight-[600] font-semibold text-black">
+        <div className="flex items-center justify-center gap-4 md:gap-6 mb-6 md:mb-8 flex-wrap">
+          <span className="font-funnel text-[16px] md:text-[24px] weight-[600] font-semibold text-black">
             Cross Chain
           </span>
-          <span className="bg-[#0000004D] rounded-full w-[6px] h-[6px]"></span>
-          <span className="font-funnel text-[24px] weight-[600] font-semibold text-black">
+          <span className="bg-[#0000004D] rounded-full w-[5px] h-[5px] md:w-[6px] md:h-[6px]"></span>
+          <span className="font-funnel text-[16px] md:text-[24px] weight-[600] font-semibold text-black">
             Cross Protocol
           </span>
-          <span className="bg-[#0000004D] rounded-full w-[6px] h-[6px]"></span>
-          <span className="font-funnel text-[24px] weight-[600] font-semibold text-black">
+          <span className="bg-[#0000004D] rounded-full w-[5px] h-[5px] md:w-[6px] md:h-[6px]"></span>
+          <span className="font-funnel text-[16px] md:text-[24px] weight-[600] font-semibold text-black">
             Cross Jurisdictional
           </span>
         </div>
 
         {/* Description */}
-        <p className="font-inter text-center text-[#000000CC] text-[18px] leading-relaxed mx-[60px]">
+        <p className="font-inter text-center text-[#000000CC] text-[14px] md:text-[16px] leading-relaxed mx-6 md:mx-[60px]">
           We are well aware that true liquidity should not be confined by the
           boundaries of technology stacks or the walls of jurisdictions.
           Chainlex has built a compliance layer with &apos;global
