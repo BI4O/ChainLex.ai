@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 // Logo 数据 - 只需要替换对应的图片路径即可
 const logos = [
@@ -35,11 +36,23 @@ const logos = [
   { name: "sipac", src: "/images/logos/sipac.webp", width: 220, height: 100 }
 ];
 
-// 计算一组 logo 的总宽度
-const LOGO_WIDTH = 220;
-const TOTAL_WIDTH = logos.length * LOGO_WIDTH;
-
 export default function Support() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // 根据屏幕尺寸选择参数
+  const logoWidth = isMobile ? 120 : 220;
+  const totalWidth = logos.length * logoWidth;
+
   // 复制两组实现无缝循环
   const extendedLogos = [...logos, ...logos];
 
@@ -52,7 +65,7 @@ export default function Support() {
               transform: translateX(0);
             }
             100% {
-              transform: translateX(-${TOTAL_WIDTH}px);
+              transform: translateX(-${totalWidth}px);
             }
           }
           .logo-carousel-seamless {
@@ -60,9 +73,9 @@ export default function Support() {
           }
         `}
       </style>
-      <section className="pl-[12%] bg-white py-20 lg:py-24 overflow-hidden">
+      <section className="px-6 lg:px-[12%] bg-white py-20 lg:py-24 overflow-hidden">
         {/* Title */}
-        <h2 className="font-bodoni text-[48px] weight-[600] text-black mb-16">
+        <h2 className="font-bodoni weight-[600] text-[28px] sm:text-[36px] lg:text-[48px] text-black mb-8 md:mb-12 lg:mb-16">
           Support
         </h2>
 
@@ -73,13 +86,13 @@ export default function Support() {
               <div
                 key={`${logo.name}-${index}`}
                 className="flex-shrink-0 flex items-center justify-center"
-                style={{ width: LOGO_WIDTH }}
+                style={{ width: logoWidth }}
               >
                 <Image
                   src={logo.src}
                   alt={logo.name}
-                  width={logo.width}
-                  height={logo.height}
+                  width={isMobile ? 120 : 220}
+                  height={isMobile ? 55 : 100}
                   className="object-contain transition-all duration-300"
                 />
               </div>
