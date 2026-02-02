@@ -79,31 +79,143 @@ export default function FlagshipUseCase() {
   };
 
   return (
-    <section className="relative bg-white py-20 lg:py-32 overflow-hidden">
+    <section className="relative bg-white py-12 md:py-20 lg:py-32 overflow-hidden">
       {/* Background Image */}
       <div className="absolute top-0 left-0 w-full h-full">
         <Image src="/images/flagship-bg.webp" alt="Flagship background" fill />
       </div>
 
-      <div className="relative px-[12%]">
+      <div className="relative px-6 md:px-[12%]">
         {/* Header */}
-        <div className="mb-8">
-          <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-2">
-            Flagship Use Case
-          </h2>
-          <p className="font-inter text-[#00000080] text-[18px]">
-            Transforming the $25 trillion of global trade underpinned by Bills
-            of Lading into liquid, programmable, and enforceable digital assets.
-          </p>
-        </div>
+        <h2 className="font-bodoni weight-[600] text-[28px] sm:text-[36px] lg:text-[48px] text-black mb-8 md:mb-12">
+          Flagship Use Case
+        </h2>
+        <p className="font-inter text-[#00000080] text-[14px] sm:text-[16px] md:text-[18px] mb-8 md:mb-12">
+          Transforming the $25 trillion of global trade underpinned by Bills
+          of Lading into liquid, programmable, and enforceable digital assets.
+        </p>
 
         {/* Subtitle */}
-        <h3 className="font-inter text-[32px] font-semibold text-black text-center mb-14">
+        <h3 className="font-inter text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-black text-center mb-8 md:mb-14">
           eBL RWA Tokenization
         </h3>
 
-        {/* Process Flow */}
-        <div className="flex items-start justify-between gap-4 mb-12">
+        {/* ========== MOBILE: Process Flow ========== */}
+        <div className="md:hidden mb-8">
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="flex items-start justify-start gap-2 min-w-[800px] w-max">
+            {/* Ship Icon */}
+            <div className="flex-shrink-0 transition-all duration-500">
+              <Image
+                src={activeIconIndex >= 0 ? icons[0].color : icons[0].black}
+                alt="Ship Icon"
+                width={40}
+                height={30}
+              />
+            </div>
+
+            {/* Dotted Line Arrow */}
+            <div className="flex items-center pt-4 flex-shrink-0">
+              <Image
+                src={
+                  activeIconIndex >= 0
+                    ? "/icons/dotted-line-haircut.svg"
+                    : "/icons/dotted-line-haircut-black.svg"
+                }
+                alt="Arrow"
+                width={40}
+                height={6}
+              />
+            </div>
+
+            {/* Three Module Cards */}
+            <div className="flex gap-2 justify-center mt-1">
+              {modules.map((module, index) => {
+                const isModuleActive = activeModuleIndex >= index;
+                return (
+                  <div key={index} className="flex flex-col items-center">
+                    {/* Module Card */}
+                    <div
+                      className={`font-inter px-3 py-2 rounded-xl weight-[600] text-[12px] font-semibold min-w-[110px] flex items-center justify-center relative transition-all duration-500 h-[40px] ${
+                        isModuleActive
+                          ? "text-white"
+                          : "text-black bg-white shadow-sm"
+                      }`}
+                      style={{
+                        background: isModuleActive
+                          ? "linear-gradient(180deg, #324998 0%, #1a2a5e 100%)"
+                          : "white"
+                      }}
+                    >
+                      {module.name}
+                      {/* Triangle pointer - only show when activated */}
+                      {isModuleActive && (
+                        <div
+                          className="absolute left-1/2 -translate-x-1/2 -bottom-[5px] w-4 h-[6px]"
+                          style={{
+                            background: "#1a2a5e",
+                            clipPath: "polygon(50% 100%, 0% 0%, 100% 0%)"
+                          }}
+                        />
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Dotted Line Arrow */}
+            <div className="flex items-center pt-4 flex-shrink-0">
+              <Image
+                src={
+                  activeIconIndex >= 1
+                    ? "/icons/dotted-line-haircut.svg"
+                    : "/icons/dotted-line-haircut-black.svg"
+                }
+                alt="Arrow"
+                width={40}
+                height={6}
+              />
+            </div>
+
+            {/* Grid Icon */}
+            <div className="transition-all duration-500">
+              <Image
+                src={activeIconIndex >= 1 ? icons[1].color : icons[1].black}
+                alt="Grid Icon"
+                width={36}
+                height={45}
+              />
+            </div>
+
+            <div className="flex items-center pt-4 flex-shrink-0">
+              <Image
+                src={
+                  activeIconIndex >= 2
+                    ? "/icons/dotted-line-haircut.svg"
+                    : "/icons/dotted-line-haircut-black.svg"
+                }
+                alt="Arrow"
+                width={40}
+                height={6}
+              />
+            </div>
+
+            {/* Trend Icon */}
+            <div className="transition-all duration-500">
+              <Image
+                src={activeIconIndex >= 2 ? icons[2].color : icons[2].black}
+                alt="Trend Icon"
+                width={36}
+                height={36}
+              />
+            </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ========== DESKTOP: Process Flow (Original) ========== */}
+        <div className="hidden md:flex items-start justify-between gap-4 mb-12">
           {/* Ship Icon */}
           <div className="flex-shrink-0 transition-all duration-500">
             <Image
@@ -240,8 +352,67 @@ export default function FlagshipUseCase() {
           </div>
         </div>
 
-        {/* Timeline with Scale */}
-        <div className="relative mb-12">
+        {/* ========== MOBILE: Timeline ========== */}
+        <div className="md:hidden mb-8">
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="relative min-w-[600px] w-max">
+            {/* Scale Marks - pointing up */}
+            <div className="relative h-2">
+              {/* Mark 1 - after eBL */}
+              <div
+                className="absolute w-[1px] h-2 bg-black bottom-0"
+                style={{ left: "8%" }}
+              />
+              {/* Mark 2 - after ChainLex Platform */}
+              <div
+                className="absolute w-[1px] h-2 bg-black bottom-0"
+                style={{ left: "68%" }}
+              />
+              {/* Mark 3 - after eBL RWA */}
+              <div
+                className="absolute w-[1px] h-2 bg-black bottom-0"
+                style={{ left: "85%" }}
+              />
+            </div>
+
+            {/* Horizontal Line */}
+            <div className="h-[1px] bg-black" />
+
+            {/* Labels - positioned in center of each region */}
+            <div className="flex pt-2">
+              {/* eBL region: 0% - 8% */}
+              <div style={{ width: "8%" }} className="text-center">
+                <span className="font-inter text-[12px] weight-[500] font-medium text-black">
+                  eBL
+                </span>
+              </div>
+              {/* ChainLex Platform region: 8% - 68% */}
+              <div style={{ width: "60%" }} className="text-center">
+                <span className="text-[10px] font-medium text-black">
+                  ChainLex Platform
+                </span>
+              </div>
+              {/* eBL RWA region: 68% - 85% */}
+              <div style={{ width: "17%" }} className="text-center">
+                <span className="text-[10px] font-medium text-black">
+                  eBL RWA
+                </span>
+              </div>
+              {/* Global Liquidity Layer region: 85% - 100% */}
+              <div style={{ width: "15%" }} className="text-center">
+                <span className="text-[10px] font-medium text-black">
+                  Global Liquidity
+                  <br />
+                  Layer
+                </span>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ========== DESKTOP: Timeline (Original) ========== */}
+        <div className="hidden md:block relative mb-12">
           {/* Scale Marks - pointing up */}
           <div className="relative h-4">
             {/* Mark 1 - after eBL */}
@@ -299,7 +470,7 @@ export default function FlagshipUseCase() {
         <div className="flex justify-center">
           <button
             onClick={handleClick}
-            className="font-inter text-[20px] weight-[500] font-medium inline-flex items-center gap-2 px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
+            className="font-inter text-[16px] md:text-[20px] weight-[500] font-medium inline-flex items-center gap-2 px-6 md:px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
           >
             {isActivated ? "Try again" : "Click it"}
             <Image src="/icons/arrow.svg" alt="arrow" width={14} height={14} />
