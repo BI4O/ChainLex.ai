@@ -124,66 +124,72 @@ export default function Compliance() {
         {/* Icons Grid with Carousel Effect */}
         <div className="flex flex-col gap-6 mb-16">
           {/* Row 1: Blockchains - 向左轮播 */}
-          <CarouselRow
-            items={blockchains}
-            visibleCount={5}
-            itemWidth={100}
-            gap={16}
-            interval={2000}
-            direction="left"
-            renderItem={(item) => (
-              <div className="w-[100px] h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center">
-                <div
-                  className={`w-[50px] h-[50px] rounded-full ${item.color || "bg-[#000000]"} overflow-hidden relative`}
-                >
-                  <Image
-                    src={item.icon}
-                    alt={item.name}
-                    fill
-                    className="object-contain"
-                  />
+          <div className="flex justify-center">
+            <CarouselRow
+              items={blockchains}
+              visibleCount={5}
+              itemWidth={100}
+              gap={16}
+              interval={2000}
+              direction="left"
+              renderItem={(item) => (
+                <div className="w-[100px] h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center">
+                  <div
+                    className={`w-[50px] h-[50px] rounded-full ${item.color || "bg-[#000000]"} overflow-hidden relative`}
+                  >
+                    <Image
+                      src={item.icon}
+                      alt={item.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
-              </div>
-            )}
-          />
+              )}
+            />
+          </div>
 
           {/* Row 2: Standards - 向右轮播 */}
-          <CarouselRow
-            items={standards}
-            visibleCount={5}
-            itemWidth={100}
-            gap={16}
-            interval={2500}
-            direction="right"
-            renderItem={(item) => (
-              <div className="w-[100px] h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center">
-                <span className="text-[18px] text-[#000000] font-bold text-center leading-tight px-2">
-                  {item.name}
-                </span>
-              </div>
-            )}
-          />
+          <div className="flex justify-center">
+            <CarouselRow
+              items={standards}
+              visibleCount={5}
+              itemWidth={100}
+              gap={16}
+              interval={2500}
+              direction="right"
+              renderItem={(item) => (
+                <div className="w-[100px] h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center">
+                  <span className="text-[18px] text-[#000000] font-bold text-center leading-tight px-2">
+                    {item.name}
+                  </span>
+                </div>
+              )}
+            />
+          </div>
 
           {/* Row 3: Jurisdictions - 向左轮播 */}
-          <CarouselRow
-            items={jurisdictions}
-            visibleCount={5}
-            itemWidth={100}
-            gap={16}
-            interval={2200}
-            direction="left"
-            renderItem={(item) => (
-              <div className="w-[100px] h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center overflow-hidden">
-                <Image
-                  src={item.icon!}
-                  alt={item.name}
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
-              </div>
-            )}
-          />
+          <div className="flex justify-center">
+            <CarouselRow
+              items={jurisdictions}
+              visibleCount={5}
+              itemWidth={100}
+              gap={16}
+              interval={2200}
+              direction="left"
+              renderItem={(item) => (
+                <div className="w-[100px] h-[100px] rounded-full bg-[#F4F7FB] flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={item.icon!}
+                    alt={item.name}
+                    width={60}
+                    height={60}
+                    className="rounded-full"
+                  />
+                </div>
+              )}
+            />
+          </div>
         </div>
 
         {/* Cross Labels */}
