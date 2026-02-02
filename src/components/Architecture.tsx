@@ -134,7 +134,7 @@ export default function Architecture() {
         <div className="flex justify-center">
           <Link
             href="/whitepaper"
-            className="text-[18px] md:text-[20px] weight-[500] font-inter inline-flex items-center gap-2 px-6 md:px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
+            className="font-inter weight-[500] text-[16px] md:text-[20px] inline-flex items-center gap-2 px-6 md:px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
           >
             Whitepaper
             <Image src="/icons/arrow.svg" alt="arrow" width={14} height={14} />

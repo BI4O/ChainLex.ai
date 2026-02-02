@@ -33,14 +33,14 @@ export default function Ecosystem() {
 
   return (
     <section className="bg-[#F4F7FB] py-20 lg:py-32">
-      <div className="px-[12%]">
+      <div className="px-6 lg:px-[12%]">
         {/* Title */}
-        <h2 className="font-bodoni text-[48px] weight-[600] text-black mb-12">
+        <h2 className="font-bodoni weight-[600] text-[28px] sm:text-[36px] lg:text-[48px] text-black mb-8 md:mb-12">
           Building the Compliance Ecosystem.
         </h2>
 
-        {/* Cards Container */}
-        <div className="flex gap-4 h-[480px] mb-12">
+        {/* Cards Container - Desktop */}
+        <div className="hidden md:flex gap-4 h-[480px] mb-12">
           {ecosystemItems.map((item) => {
             const isActive = activeId === item.id;
 
@@ -110,11 +110,91 @@ export default function Ecosystem() {
           })}
         </div>
 
+        {/* Cards Container - Mobile */}
+        <div className="md:hidden flex flex-col gap-3 mb-8">
+          {ecosystemItems.map((item, index) => {
+            const isActive = activeId === item.id;
+
+            return (
+              <div
+                key={item.id}
+                className="relative rounded-2xl overflow-hidden cursor-pointer"
+                style={{
+                  height: isActive ? "220px" : "100px",
+                  transition: "height 0.2s ease-in-out"
+                }}
+                onClick={() => setActiveId(item.id)}
+              >
+                {/* Background Image */}
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                />
+
+                {/* Gradient Overlay */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: isActive
+                      ? "linear-gradient(to top, rgba(27,35,56,0.95) 0%, rgba(27,35,56,0.6) 40%, transparent 100%)"
+                      : "linear-gradient(to top, rgba(27,35,56,0.95) 0%, rgba(27,35,56,0.4) 60%, transparent 100%)"
+                  }}
+                />
+
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-end p-4">
+                  <div className="transition-opacity duration-200" style={{ opacity: isActive ? 1 : 1 }}>
+                    {isActive ? (
+                      <>
+                        <h3 className="font-funnel weight-[700] text-white mb-2 text-[16px]">
+                          {item.title}
+                        </h3>
+                        <p
+                          className="font-inter text-white leading-snug text-[13px]"
+                          style={{
+                            maxHeight: "200px",
+                            opacity: 1,
+                            overflow: "hidden"
+                          }}
+                        >
+                          {item.description}
+                        </p>
+                      </>
+                    ) : (
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-bold text-white leading-tight text-[14px]">
+                          {item.title.split(" ").length > 2 ? (
+                            <>
+                              {item.title.split(" ").slice(0, 2).join(" ")}
+                              <br />
+                              {item.title.split(" ").slice(2).join(" ")}
+                            </>
+                          ) : (
+                            item.title
+                          )}
+                        </h3>
+                        <Image
+                          src="/icons/arrow-right.svg"
+                          alt="Arrow Right"
+                          width={28}
+                          height={28}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
         {/* Join Us Button */}
         <div className="flex justify-center">
           <Link
             href="mailto:lee@chainlex.ai"
-            className="font-inter weight-[500] text-[20px] inline-flex items-center gap-2 px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
+            className="font-inter weight-[500] text-[16px] md:text-[20px] inline-flex items-center gap-2 px-6 md:px-8 py-3 bg-black text-white rounded-full hover:opacity-[0.86] transition-opacity"
           >
             Join us
             <Image src="/icons/arrow.svg" alt="arrow" width={14} height={14} />
