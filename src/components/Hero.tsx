@@ -52,10 +52,10 @@ export default function Hero() {
               href="/platform"
               className="hero-link relative flex items-center gap-2 pb-1"
             >
-              <span className="font-inter text-white text-[18px] md:text-[20px] font-bold">
+              <span className="font-inter text-white text-[14px] md:text-[20px] font-bold">
                 Open Platform
               </span>
-              <Image src="/icons/arrow.svg" alt="arrow" width={24} height={24} />
+              <Image src="/icons/arrow.svg" alt="arrow" width={20} height={20} className="md:w-[24px] md:h-[24px]" />
               {/* Hover underline */}
               <span className="hero-underline absolute bottom-0 left-0 h-[3px] bg-white" />
             </Link>
@@ -65,10 +65,10 @@ export default function Hero() {
               href="/demo"
               className="hero-link relative flex items-center gap-2 pb-1"
             >
-              <span className="font-inter text-white text-[18px] md:text-[20px] font-bold">
+              <span className="font-inter text-white text-[14px] md:text-[20px] font-bold">
                 Request a demo
               </span>
-              <Image src="/icons/arrow.svg" alt="arrow" width={24} height={24} />
+              <Image src="/icons/arrow.svg" alt="arrow" width={20} height={20} className="md:w-6 md:h-6" />
               {/* Hover underline */}
               <span className="hero-underline absolute bottom-0 left-0 h-[3px] bg-white" />
             </Link>

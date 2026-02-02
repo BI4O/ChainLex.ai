@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
@@ -77,6 +77,7 @@ function CardIcon({ type }: { type: string }) {
 
 export default function Bottlenecks() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -92,7 +93,7 @@ export default function Bottlenecks() {
       className="bg-[#f5f7fa] relative"
       style={{ height: `${cardHeight * bottlenecksData.length + 800}px` }}
     >
-      <div className="px-6 lg:px-[12%] sticky top-0 min-h-screen flex items-start pt-[15vh] overflow-hidden">
+      <div className="px-6 lg:px-[12%] sticky top-0 min-h-screen flex items-start pt-[10vh] md:pt-[15vh] overflow-hidden">
         <div className="max-w-[1440px] w-full">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
             {/* Left Content */}
@@ -104,14 +105,27 @@ export default function Bottlenecks() {
                 <br />
                 Trillion in Liquidity.
               </h2>
-              <p className="text-[#00000080] text-[16px] sm:text-[18px] font-inter">
+              <p className="text-[#00000080] text-[14px] sm:text-[16px] md:text-[18px] font-inter">
                 Over $16 trillion in assets are constrained by real-world
                 conditions, leaving their potential unrealized.
               </p>
             </div>
 
-            {/* Right Content - Stacked Cards */}
-            <div className="lg:w-[55%] relative h-[700px]">
+            {/* ========== MOBILE: Accordion Cards ========== */}
+            <div className="lg:hidden w-full flex flex-col">
+              {bottlenecksData.map((item, index) => (
+                <MobileAccordionCard
+                  key={item.id}
+                  item={item}
+                  index={index}
+                  isExpanded={expandedIndex === index}
+                  onToggle={() => setExpandedIndex(expandedIndex === index ? null : index)}
+                />
+              ))}
+            </div>
+
+            {/* ========== DESKTOP: Stacked Cards ========== */}
+            <div className="hidden lg:block lg:w-[55%] relative h-[700px]">
               {bottlenecksData.map((item, index) => (
                 <BottleneckCard
                   key={item.id}
@@ -128,6 +142,90 @@ export default function Bottlenecks() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Mobile Accordion Card Component
+interface MobileAccordionCardProps {
+  item: (typeof bottlenecksData)[0];
+  index: number;
+  isExpanded: boolean;
+  onToggle: () => void;
+}
+
+function MobileAccordionCard({ item, isExpanded, onToggle }: MobileAccordionCardProps) {
+  return (
+    <motion.div
+      className="w-full overflow-hidden"
+      style={{ backgroundColor: item.color }}
+      initial={false}
+      animate={{
+        height: isExpanded ? "auto" : 72
+      }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut"
+      }}
+    >
+      {/* Header - Always Visible */}
+      <div
+        className="flex items-center justify-between px-4 cursor-pointer"
+        style={{ height: 72, boxShadow: "0 1px 2px rgba(0,0,0,0.06)" }}
+        onClick={onToggle}
+      >
+        <div className="flex items-center gap-3">
+          {/* ID Badge - Inline */}
+          <span
+            className="text-[14px] font-bold px-2 py-1"
+            style={{
+              color: item.id === "04" ? "#000" : "#666"
+            }}
+          >
+            {item.id}
+          </span>
+          {/* Title */}
+          <h3 className="text-[16px] sm:text-[18px] text-black font-funnel font-medium leading-tight">
+            {item.title}
+          </h3>
+        </div>
+        {/* Expand Arrow Indicator */}
+        <motion.div
+          animate={{ rotate: isExpanded ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-black/30"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M5 8L10 13L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+          </svg>
+        </motion.div>
+      </div>
+
+      {/* Expanded Content */}
+      <motion.div
+        className="px-4 pb-4"
+        initial={false}
+        animate={{
+          opacity: isExpanded ? 1 : 0,
+          height: isExpanded ? "auto" : 0
+        }}
+        transition={{
+          duration: 0.2,
+          delay: isExpanded ? 0.1 : 0
+        }}
+      >
+        <div className="overflow-hidden">
+          {/* Icon */}
+          <div className="w-10 h-10 mb-3 flex items-center justify-center">
+            <CardIcon type={item.icon} />
+          </div>
+
+          {/* Description */}
+          <p className="text-[14px] text-black/80 font-inter leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
