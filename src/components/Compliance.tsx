@@ -227,16 +227,16 @@ export default function Compliance() {
         </div>
 
         {/* Cross Labels */}
-        <div className="flex items-center justify-center gap-4 md:gap-6 mb-6 md:mb-8 flex-wrap">
-          <span className="font-funnel text-[16px] md:text-[24px] weight-[600] font-semibold text-black">
+        <div className="flex items-center justify-center gap-2 md:gap-6 mb-6 md:mb-8 flex-wrap">
+          <span className="font-funnel text-[12px] md:text-[24px] weight-[600] font-semibold text-black">
             Cross Chain
           </span>
-          <span className="bg-[#0000004D] rounded-full w-[5px] h-[5px] md:w-[6px] md:h-[6px]"></span>
-          <span className="font-funnel text-[16px] md:text-[24px] weight-[600] font-semibold text-black">
+          <span className="bg-[#0000004D] rounded-full w-[4px] h-[4px] md:w-[6px] md:h-[6px]"></span>
+          <span className="font-funnel text-[12px] md:text-[24px] weight-[600] font-semibold text-black">
             Cross Protocol
           </span>
-          <span className="bg-[#0000004D] rounded-full w-[5px] h-[5px] md:w-[6px] md:h-[6px]"></span>
-          <span className="font-funnel text-[16px] md:text-[24px] weight-[600] font-semibold text-black">
+          <span className="bg-[#0000004D] rounded-full w-[4px] h-[4px] md:w-[6px] md:h-[6px]"></span>
+          <span className="font-funnel text-[12px] md:text-[24px] weight-[600] font-semibold text-black">
             Cross Jurisdictional
           </span>
         </div>
