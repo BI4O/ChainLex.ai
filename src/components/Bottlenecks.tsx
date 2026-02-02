@@ -92,19 +92,19 @@ export default function Bottlenecks() {
       className="bg-[#f5f7fa] relative"
       style={{ height: `${cardHeight * bottlenecksData.length + 800}px` }}
     >
-      <div className="px-[12%] sticky top-0 min-h-screen flex items-start pt-[15vh] overflow-hidden">
+      <div className="px-6 lg:px-[12%] sticky top-0 min-h-screen flex items-start pt-[15vh] overflow-hidden">
         <div className="max-w-[1440px] w-full">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
             {/* Left Content */}
             <div className="lg:w-[40%]">
-              <h2 className="font-bodoni text-[48px] font-semibold text-black leading-tight mb-6">
+              <h2 className="font-bodoni text-[28px] sm:text-[36px] lg:text-[48px] font-semibold text-black leading-tight mb-6">
                 Four Bottlenecks
                 <br />
                 Holding Back $16
                 <br />
                 Trillion in Liquidity.
               </h2>
-              <p className="text-[#00000080] text-[18px] font-inter">
+              <p className="text-[#00000080] text-[16px] sm:text-[18px] font-inter">
                 Over $16 trillion in assets are constrained by real-world
                 conditions, leaving their potential unrealized.
               </p>
@@ -244,14 +244,14 @@ function BottleneckCard({
       </div>
 
       {/* Card Content */}
-      <motion.div className="p-30 pt-20" style={{ opacity: contentOpacity }}>
+      <motion.div className="p-6 lg:p-10 pt-4 lg:pt-6" style={{ opacity: contentOpacity }}>
         {/* Icon */}
         <div className="w-12 h-12 mb-6 flex items-center justify-center text-black">
           <CardIcon type={item.icon} />
         </div>
 
         {/* Title */}
-        <h3 className="text-[32px] text-black mb-4 weight-[700] font-funnel">
+        <h3 className="text-[24px] sm:text-[28px] lg:text-[32px] text-black mb-4 weight-[700] font-funnel">
           {item.title}
         </h3>
 
