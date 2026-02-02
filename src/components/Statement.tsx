@@ -22,8 +22,8 @@ export default function Statement() {
 
       {/* Content - Left Side */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="px-[12%]">
-          <p className="text-white text-[32px] weight-[600] font-inter font-semibold max-w-[600px]">
+        <div className="px-6 lg:px-[12%]">
+          <p className="text-white text-[24px] md:text-[28px] lg:text-[32px] weight-[600] font-inter font-semibold max-w-[600px]">
             This is not a legal problem,
             <br />
             it&apos;s a missing compliance infrastructure problem.
