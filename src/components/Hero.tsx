@@ -17,7 +17,7 @@ export default function Hero() {
           }
         `}
       </style>
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative min-h-screen w-full overflow-hidden">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <video
@@ -34,14 +34,14 @@ export default function Hero() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col items-center justify-center px-6">
+        <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 lg:px-12">
           {/* Main Title */}
-          <h1 className="font-bodoni text-[110px] text-white text-center mb-4">
+          <h1 className="font-bodoni text-[32px] sm:text-[40px] md:text-[56px] lg:text-[96px] xl:text-[110px] text-white text-center mb-4 leading-tight">
             Compliance,Codified.
           </h1>
 
           {/* Subtitle */}
-          <p className="text-white/70 text-sm text-center mb-30 max-w-xl text-[18px]">
+          <p className="text-white/70 text-sm text-center mb-30 max-w-xl text-[16px] md:text-[18px]">
             The AI-Driven Compliance Infrastructure for RWA
           </p>
 
@@ -52,7 +52,7 @@ export default function Hero() {
               href="/platform"
               className="hero-link relative flex items-center gap-2 pb-1"
             >
-              <span className="font-inter text-white text-[20px] font-bold">
+              <span className="font-inter text-white text-[18px] md:text-[20px] font-bold">
                 Open Platform
               </span>
               <Image src="/icons/arrow.svg" alt="arrow" width={24} height={24} />
@@ -65,7 +65,7 @@ export default function Hero() {
               href="/demo"
               className="hero-link relative flex items-center gap-2 pb-1"
             >
-              <span className="font-inter text-white text-[20px] font-bold">
+              <span className="font-inter text-white text-[18px] md:text-[20px] font-bold">
                 Request a demo
               </span>
               <Image src="/icons/arrow.svg" alt="arrow" width={24} height={24} />
