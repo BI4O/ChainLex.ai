@@ -59,36 +59,25 @@ function FeatureIcon({ type, isActive }: { type: string; isActive: boolean }) {
   );
 }
 
-// 每个产品激活的 feature icons
+// 每个产品激活的 feature icons - 按索引分段
 const productActiveFeatures: Record<string, string[]> = {
   LexStudio: [
-    "consultation",
-    "diligence",
-    "jurisdictions",
-    "documents",
-    "contract",
-    "profit",
-    "exception",
-    "onchain",
-    "offchain"
+    "consultation",      // 0
+    "diligence",         // 1
+    "jurisdictions",     // 2
+    "documents"          // 3
   ],
   LexOracle: [
-    "contract",
-    "confirmation",
-    "sync",
-    "risk",
-    "profit",
-    "onchain",
-    "offchain"
+    "contract",          // 4
+    "confirmation",      // 5
+    "sync",              // 6
+    "risk"               // 7
   ],
   LexEnforcer: [
-    "contract",
-    "sync",
-    "risk",
-    "profit",
-    "exception",
-    "onchain",
-    "offchain"
+    "profit",            // 8
+    "exception",         // 9
+    "onchain",           // 10
+    "offchain"           // 11
   ]
 };
 
