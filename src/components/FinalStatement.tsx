@@ -21,7 +21,7 @@ export default function FinalStatement() {
 
       {/* City Background Image */}
       <div className="relative h-[680px] lg:h-[680px]">
-        <Image src="/images/city-skyline.png" alt="City Skyline" fill />
+        <Image src="/images/city-skyline.webp" alt="City Skyline" fill />
       </div>
     </section>
   );

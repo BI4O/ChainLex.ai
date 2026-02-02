@@ -28,7 +28,7 @@ const researchData: Record<
   "1": {
     title: "The 2026 Crypto Regulation outlook",
     date: "Dec 9, 2025",
-    image: "/images/agent-matrix.png",
+    image: "/images/agent-matrix.webp",
     content: [
       "Miami, FL - Securitize, the leader in tokenizing real-world assets (RWAs), today announced the appointment of Jerome Roche as its new General Counsel. Roche joins Securitize from PayPal, where he served as Head of Legal for Digital Assets and played a central role in the development,launch, and regulatory strategy for some of the company's most significant financial-technology initiatives, including PayPal USD (PYUSD), a U.S. dollar denominated stablecoin.",
       "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization.",
@@ -39,7 +39,7 @@ const researchData: Record<
   "2": {
     title: "The 2026 Crypto Regulation outlook",
     date: "Dec 9, 2025",
-    image: "/images/agent-matrix.png",
+    image: "/images/agent-matrix.webp",
     content: [
       "Miami, FL - Securitize, the leader in tokenizing real-world assets (RWAs), today announced the appointment of Jerome Roche as its new General Counsel. Roche joins Securitize from PayPal, where he served as Head of Legal for Digital Assets and played a central role in the development, launch, and regulatory strategy for some of the company's most significant financial-technology initiatives, including PayPal USD (PYUSD), a U.S. dollar denominated stablecoin.",
       "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization.",
@@ -50,7 +50,7 @@ const researchData: Record<
   "3": {
     title: "The 2026 Crypto Regulation outlook",
     date: "Dec 9, 2025",
-    image: "/images/agent-matrix.png",
+    image: "/images/agent-matrix.webp",
     content: [
       "Miami, FL - Securitize, the leader in tokenizing real-world assets (RWAs), today announced the appointment of Jerome Roche as its new General Counsel. Roche joins Securitize from PayPal, where he served as Head of Legal for Digital Assets and played a central role in the development, launch, and regulatory strategy for some of the company's most significant financial-technology initiatives, including PayPal USD (PYUSD), a U.S. dollar denominated stablecoin.",
       "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization.",
@@ -77,14 +77,14 @@ export default async function ResearchDetail({
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/research-bg.png"
+            src="/images/research-bg.webp"
             alt={research.title}
             fill
             className="object-cover"
           />
           {/* Mask Overlay */}
           <Image
-            src="/images/mask.png"
+            src="/images/mask.webp"
             alt="mask"
             fill
             className="object-cover"

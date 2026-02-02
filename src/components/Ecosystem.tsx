@@ -10,21 +10,21 @@ const ecosystemItems = [
     title: "Global Lawyer Network",
     description:
       "We have broken down the geographical boundaries of legal services. Chainlex connects top-tier law firms and service institutions worldwide to build a distributed compliance collaboration platform. No matter where assets flow, you can obtain second-level responsive localized compliance guidance and penetrating legal enforcement support.",
-    image: "/images/ecosystem-lawyer.png"
+    image: "/images/ecosystem-lawyer.webp"
   },
   {
     id: "certification",
     title: "Certification",
     description:
       "Establishing trust anchors in an unordered market. We provide authoritative compliance audits and endorsements for high-quality RWA projects, establishing institutional-level asset safety access standards from the confirmation of underlying asset rights to on-chain logic verification.",
-    image: "/images/ecosystem-certification.png"
+    image: "/images/ecosystem-certification.webp"
   },
   {
     id: "academy",
     title: "Academy",
     description:
       "We are committed to empowering ecological partners and cultivating the next generation of interdisciplinary talents who understand both law and coding.",
-    image: "/images/ecosystem-academy.png"
+    image: "/images/ecosystem-academy.webp"
   }
 ];
 

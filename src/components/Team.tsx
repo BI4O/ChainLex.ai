@@ -12,7 +12,7 @@ const teamMembers = [
       "Ex-Chief Legal Officer of a Publicly",
       "Listed Internet Company"
     ],
-    image: "/images/team-arthur.png",
+    image: "/images/team-arthur.webp",
     twitter: "https://x.com/arthurlee"
   },
   {
@@ -23,7 +23,7 @@ const teamMembers = [
       "Ex-Product Manager at Global",
       "Bank,AI Product Lead in Web3"
     ],
-    image: "/images/team-neo.png",
+    image: "/images/team-neo.webp",
     twitter: "https://x.com/neo"
   }
 ];
@@ -42,7 +42,7 @@ export default function Team() {
           {/* Neo - Left */}
           <div className="flex items-end gap-6 relative mt-[130px]">
             <Image
-              src={"/images/team-neo.png"}
+              src={"/images/team-neo.webp"}
               alt="team-neo"
               width={320}
               height={430}
@@ -89,7 +89,7 @@ export default function Team() {
           <div className="flex items-start gap-6 mt-[-140px] relative">
             {/* Photo */}
             <Image
-              src={"/images/team-arthur.png"}
+              src={"/images/team-arthur.webp"}
               alt="team-arthur"
               width={320}
               height={430}

@@ -82,7 +82,7 @@ export default function FlagshipUseCase() {
     <section className="relative bg-white py-20 lg:py-32 overflow-hidden">
       {/* Background Image */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <Image src="/images/flagship-bg.png" alt="Flagship background" fill />
+        <Image src="/images/flagship-bg.webp" alt="Flagship background" fill />
       </div>
 
       <div className="relative px-[12%]">

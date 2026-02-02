@@ -9,21 +9,21 @@ const architectureItems = [
     subtitle: "LLM-Native Legal Infrastructure.",
     description:
       "A network of ChainLex AI agents continuously interprets, normalizes, and aligns global regulations into an executable compliance layer.",
-    image: "/images/agent-matrix.png"
+    image: "/images/agent-matrix.webp"
   },
   {
     title: "ZK-Proofs",
     subtitle: "Proof, Not Disclosure.",
     description:
       "ChainLex uses zero-knowledge proofs to generate verifiable, constraint-based attestations of compliance logic—allowing regulators to validate rules, thresholds, and eligibility without access to underlying transaction data.",
-    image: "/images/zk-proofs.png"
+    image: "/images/zk-proofs.webp"
   },
   {
     title: "Enforcement Network",
     subtitle: "Cyber-Physical Coupling Protocol",
     description:
       "Transcend the boundaries of code and forge legal anchors in the physical world. Through protocol-level judicial mapping, endow digital instructions with enforceable power that penetrates legal jurisdictions.",
-    image: "/images/enforcement.png"
+    image: "/images/enforcement.webp"
   }
 ];
 
@@ -49,7 +49,7 @@ export default function Architecture() {
             />
             {/* Layer 2: 蒙版 */}
             <Image
-              src="/images/mask.png"
+              src="/images/mask.webp"
               alt="mask"
               fill
               className="object-cover"
@@ -79,7 +79,7 @@ export default function Architecture() {
             />
             {/* Layer 2: 蒙版 */}
             <Image
-              src="/images/mask.png"
+              src="/images/mask.webp"
               alt="mask"
               fill
               className="object-cover"

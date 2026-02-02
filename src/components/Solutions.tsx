@@ -9,24 +9,24 @@ const products = [
     subtitle: "Automated Legal Engineering.",
     description:
       "Transform static legal prose into executable smart contract logic in seconds, not weeks.",
-    image: "/images/LexStudio.png",
-    imageBlack: "/images/LexStudio-black.png"
+    image: "/images/LexStudio.webp",
+    imageBlack: "/images/LexStudio-black.webp"
   },
   {
     name: "LexOracle",
     subtitle: "Hybrid Oracle Framework.",
     description:
       "Combine the efficient responsiveness of centralization with the trusted security of decentralization to build an oracle service that balances performance and safety.",
-    image: "/images/LexOracle.png",
-    imageBlack: "/images/LexOracle-black.png"
+    image: "/images/LexOracle.webp",
+    imageBlack: "/images/LexOracle-black.webp"
   },
   {
     name: "LexEnforcer",
     subtitle: "Legally Binding Execution.",
     description:
       "Connect on-chain triggers to off-chain legal mandates. When the code executes, the law enforces.",
-    image: "/images/LexEnforcer.png",
-    imageBlack: "/images/LexEnforcer-black.png"
+    image: "/images/LexEnforcer.webp",
+    imageBlack: "/images/LexEnforcer-black.webp"
   }
 ];
 

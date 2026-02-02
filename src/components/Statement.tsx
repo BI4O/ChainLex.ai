@@ -7,7 +7,7 @@ export default function Statement() {
       <div
         className="absolute top-0 right-0 w-1/2 h-full bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/images/statement-bg.png')`
+          backgroundImage: `url('/images/statement-bg.webp')`
         }}
       />
 

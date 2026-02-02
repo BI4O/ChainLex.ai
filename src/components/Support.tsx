@@ -6,33 +6,33 @@ import Image from "next/image";
 const logos = [
   {
     name: "hashkey",
-    src: "/images/logos/hashkey.png",
+    src: "/images/logos/hashkey.webp",
     width: 220,
     height: 100
   },
   {
     name: "chainlink",
-    src: "/images/logos/chainlink.png",
+    src: "/images/logos/chainlink.webp",
     width: 220,
     height: 100
   },
   {
     name: "cyberport",
-    src: "/images/logos/cyberport.png",
+    src: "/images/logos/cyberport.webp",
     width: 220,
     height: 100
   },
-  { name: "hkust", src: "/images/logos/hkust.png", width: 220, height: 100 },
-  { name: "gsbn", src: "/images/logos/gsbn.png", width: 220, height: 100 },
+  { name: "hkust", src: "/images/logos/hkust.webp", width: 220, height: 100 },
+  { name: "gsbn", src: "/images/logos/gsbn.webp", width: 220, height: 100 },
   {
     name: "kingwood",
-    src: "/images/logos/kingwood.png",
+    src: "/images/logos/kingwood.webp",
     width: 220,
     height: 100
   },
-  { name: "ey", src: "/images/logos/ey.png", width: 220, height: 100 },
-  { name: "aws", src: "/images/logos/aws.png", width: 220, height: 100 },
-  { name: "sipac", src: "/images/logos/sipac.png", width: 220, height: 100 }
+  { name: "ey", src: "/images/logos/ey.webp", width: 220, height: 100 },
+  { name: "aws", src: "/images/logos/aws.webp", width: 220, height: 100 },
+  { name: "sipac", src: "/images/logos/sipac.webp", width: 220, height: 100 }
 ];
 
 // 计算一组 logo 的总宽度

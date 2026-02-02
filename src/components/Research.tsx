@@ -7,32 +7,32 @@ import { useState } from "react";
 const researchItems = [
   {
     title: "The 2026 Crypto Regulation outlook",
-    image: "/images/agent-matrix.png",
+    image: "/images/agent-matrix.webp",
     link: "/research/1"
   },
   {
     title: "The 2026 Crypto Regulation outlook",
-    image: "/images/agent-matrix.png",
+    image: "/images/agent-matrix.webp",
     link: "/research/2"
   },
   {
     title: "The 2026 Crypto Regulation outlook",
-    image: "/images/agent-matrix.png",
+    image: "/images/agent-matrix.webp",
     link: "/research/3"
   },
   {
     title: "The 2026 Crypto Regulation outlook",
-    image: "/images/agent-matrix.png",
+    image: "/images/agent-matrix.webp",
     link: "/research/4"
   },
   {
     title: "The 2026 Crypto Regulation outlook",
-    image: "/images/agent-matrix.png",
+    image: "/images/agent-matrix.webp",
     link: "/research/5"
   },
   {
     title: "The 2026 Crypto Regulation outlook",
-    image: "/images/agent-matrix.png",
+    image: "/images/agent-matrix.webp",
     link: "/research/6"
   }
 ];
@@ -118,7 +118,7 @@ export default function Research() {
                     />
                     {/* Layer 2: Mask overlay */}
                     <Image
-                      src="/images/mask.png"
+                      src="/images/mask.webp"
                       alt="mask"
                       fill
                       className="object-cover opacity-[0.7]"
