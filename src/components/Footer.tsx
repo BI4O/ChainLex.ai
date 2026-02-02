@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,26 +14,20 @@ const socialLinks = [
   {
     name: "Email",
     href: "mailto:lee@chainlex.ai",
-    icon: (
-      <Image src="/icons/email.svg" alt="Email Icon" width={32} height={32} />
-    )
+    iconSrc: "/icons/email.svg",
+    alt: "Email Icon"
   },
   {
     name: "X (Twitter)",
     href: "https://x.com/ChainLex_ai",
-    icon: <Image src="/icons/twitter.svg" alt="X Icon" width={32} height={32} />
+    iconSrc: "/icons/twitter.svg",
+    alt: "X Icon"
   },
   {
     name: "YouTube",
     href: "https://youtube.com/@chainlex",
-    icon: (
-      <Image
-        src="/icons/you-tube.svg"
-        alt="YouTube Icon"
-        width={32}
-        height={32}
-      />
-    )
+    iconSrc: "/icons/you-tube.svg",
+    alt: "YouTube Icon"
   }
 ];
 
@@ -74,13 +67,10 @@ export default function Footer() {
                   className="text-white hover:text-white/80 transition-colors"
                 >
                   <span className="md:block hidden">
-                    {social.icon}
+                    <Image src={social.iconSrc} alt={social.alt} width={32} height={32} />
                   </span>
                   <span className="block md:hidden">
-                    {React.cloneElement(
-                      social.icon as React.ReactElement,
-                      { width: 20, height: 20 }
-                    )}
+                    <Image src={social.iconSrc} alt={social.alt} width={20} height={20} />
                   </span>
                 </Link>
               ))}
