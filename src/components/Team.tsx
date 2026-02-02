@@ -30,15 +30,106 @@ const teamMembers = [
 
 export default function Team() {
   return (
-    <section className="bg-[#f5f7fa] py-20 h-[1080px]">
-      <div className="px-[12%]">
+    <section className="bg-[#f5f7fa] py-12 md:py-20 lg:py-32 min-h-screen md:h-[1080px]">
+      <div className="px-6 md:px-[12%]">
         {/* Title */}
-        <h2 className="font-bodoni weight-[600] text-[48px] font-semibold text-black mb-55">
+        <h2 className="font-bodoni weight-[600] text-[28px] sm:text-[36px] lg:text-[48px] text-black mb-8 md:mb-12 lg:mb-[220px]">
           Born at the Convergence of&nbsp;&nbsp;Law and Code.
         </h2>
 
-        {/* Team Members */}
-        <div className="flex justify-start">
+        {/* ========== MOBILE: Team Members ========== */}
+        <div className="md:hidden flex flex-col gap-8 pb-4">
+          {/* Arthur Lee - CEO */}
+          <div className="bg-white p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+            <div className="flex gap-4">
+              {/* Photo */}
+              <Image
+                src={"/images/team-arthur.webp"}
+                alt="team-arthur"
+                width={100}
+                height={135}
+                className="object-cover flex-shrink-0"
+              />
+              {/* Info */}
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-funnel text-[20px] font-bold text-black mb-1">
+                    Arthur Lee
+                  </h3>
+                  <p className="font-inter text-[14px] font-medium text-[#324998] mb-3">
+                    CEO
+                  </p>
+                  <p className="font-inter text-[12px] text-black/50 leading-relaxed">
+                    Former Police Officer
+                    <br />
+                    Ex-Chief Legal Officer of a Publicly
+                    <br />
+                    Listed Internet Company
+                  </p>
+                </div>
+                <Link
+                  href="https://x.com/pentiumtime"
+                  target="_blank"
+                  className="self-start"
+                >
+                  <Image
+                    src="/icons/twitter1.svg"
+                    alt="X"
+                    width={20}
+                    height={20}
+                  />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Neo - CTO */}
+          <div className="bg-white p-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
+            <div className="flex gap-4">
+              {/* Photo */}
+              <Image
+                src={"/images/team-neo.webp"}
+                alt="team-neo"
+                width={100}
+                height={135}
+                className="object-cover flex-shrink-0"
+              />
+              {/* Info */}
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-funnel text-[20px] font-bold text-black mb-1">
+                    Neo
+                  </h3>
+                  <p className="font-inter text-[14px] font-medium text-[#324998] mb-3">
+                    CTO
+                  </p>
+                  <p className="font-inter text-[12px] text-black/50 leading-relaxed">
+                    Former NLP Engineer
+                    <br />
+                    Ex-Product Manager at Global Bank,
+                    <br />
+                    AI Product Lead in Web3
+                  </p>
+                </div>
+                <Link
+                  href="https://x.com/bi4o1995"
+                  target="_blank"
+                  className="self-start"
+                >
+                  <Image
+                    src="/icons/twitter1.svg"
+                    alt="X"
+                    width={20}
+                    height={20}
+                  />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ========== DESKTOP: Team Members ========== */}
+        <div className="hidden md:flex justify-start">
           {/* Neo - Left */}
           <div className="flex items-end gap-6 relative mt-[130px]">
             <Image

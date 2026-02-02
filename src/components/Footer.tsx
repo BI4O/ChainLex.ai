@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -40,29 +41,31 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="px-[12%] py-12">
+      <div className="px-6 lg:px-[12%] py-8 md:py-12">
         {/* Top Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 md:mb-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 mb-4 lg:mb-0">
             <Image
               src="/icons/logo.svg"
               alt="ChainLex Logo"
-              width={32}
-              height={32}
+              width={28}
+              height={28}
+              className="md:w-[32px] md:h-[32px]"
             />
             <Image
               src="/icons/logo-text.svg"
               alt="ChainLex"
-              width={150}
-              height={24}
+              width={120}
+              height={20}
+              className="md:w-[150px] md:h-[24px]"
             />
           </Link>
 
           {/* Right Section: Contact + Social */}
-          <div className="flex items-center gap-6">
-            <span className="font-inter text-white/50">Contact us</span>
-            <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 md:gap-6">
+            <span className="font-inter text-white/50 text-[14px] md:text-base">Contact us</span>
+            <div className="flex items-center gap-3 md:gap-4">
               {socialLinks.map((social) => (
                 <Link
                   key={social.name}
@@ -70,7 +73,15 @@ export default function Footer() {
                   target="_blank"
                   className="text-white hover:text-white/80 transition-colors"
                 >
-                  {social.icon}
+                  <span className="md:block hidden">
+                    {social.icon}
+                  </span>
+                  <span className="block md:hidden">
+                    {React.cloneElement(
+                      social.icon as React.ReactElement,
+                      { width: 20, height: 20 }
+                    )}
+                  </span>
                 </Link>
               ))}
             </div>
@@ -78,32 +89,32 @@ export default function Footer() {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center gap-8 mb-12">
+        <div className="flex flex-wrap items-center gap-4 md:gap-8 mb-8 md:mb-12">
           {navLinks.map((link, index) => (
-            <div key={link.name} className="flex items-center gap-8">
+            <div key={link.name} className="flex items-center gap-4 md:gap-8">
               <Link
                 href={link.href}
-                className="font-inter text-white/50 hover:text-white transition-colors"
+                className="font-inter text-white/50 hover:text-white transition-colors text-[14px] md:text-base"
               >
                 {link.name}
               </Link>
               {index < navLinks.length - 1 && (
-                <span className="text-white/16">|</span>
+                <span className="text-white/16 hidden md:inline">|</span>
               )}
             </div>
           ))}
         </div>
 
         {/* Disclaimer */}
-        <div className="text-white/50 leading-relaxed">
-          <p className="weight-[500]">About Us</p>
+        <div className="text-white/50 leading-relaxed text-[12px] md:text-sm">
+          <p className="weight-[500] mb-2">About Us</p>
           <p className="font-inter mb-4">
             Chainlex builds the first cross-chain, cross-protocol, and
             cross-jurisdictional compliance layer for RWAs. Through LexStudio,
             LexOracle, and LexEnforcer, we transform static paper assets into
             liquid, programmable, and legally enforceable digital assets.
           </p>
-          <p className="font-inter weight-[500]">Legal Disclaimer</p>
+          <p className="font-inter weight-[500] mb-2">Legal Disclaimer</p>
           <p className="font-inter">
             1. No Investment Advice.The information provided on this website is
             for general informational purposes only and does not constitute
