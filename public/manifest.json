@@ -1,0 +1,29 @@
+{
+  "name": "ChainLex - Compliance, Codified",
+  "short_name": "ChainLex",
+  "description": "The AI-Driven Compliance Infrastructure for Tokenized Assets",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/icons/logo.svg",
+      "sizes": "43x43",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

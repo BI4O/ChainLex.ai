@@ -67,9 +67,20 @@ const libreBodoni = localFont({
 export const metadata: Metadata = {
   title: "ChainLex - Compliance, Codified",
   description: "The AI-Driven Compliance Infrastructure for Tokenized Assets",
+  manifest: "/manifest.json",
   icons: {
-    icon: "/icons/logo.svg",
-    apple: "/icons/logo.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icons/logo.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "ChainLex",
   },
 };
 
