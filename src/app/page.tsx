@@ -14,10 +14,25 @@ import Research from "@/components/Research";
 import Team from "@/components/Team";
 import FinalStatement from "@/components/FinalStatement";
 import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+import StructuredData from "@/components/StructuredData";
+
+export const metadata: Metadata = {
+  title: "ChainLex - AI-Driven Compliance Infrastructure for Tokenized Assets",
+  description: "Automate blockchain compliance with ChainLex's AI-powered platform. Streamline regulatory reporting, ensure jurisdiction adherence, and scale your tokenized asset operations globally.",
+  openGraph: {
+    title: "ChainLex - Compliance, Codified",
+    description: "The AI-Driven Compliance Infrastructure for Tokenized Assets. Automate compliance checks, streamline regulatory reporting, and ensure global jurisdiction adherence.",
+    url: "https://chainlex.ai",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (
     <main>
+      <StructuredData type="organization" />
+      <StructuredData type="website" />
       <Header />
       <Hero />
       <Bottlenecks />
