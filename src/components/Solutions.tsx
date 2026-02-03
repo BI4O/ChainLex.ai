@@ -130,21 +130,21 @@ export default function Solutions() {
                   }`}
                 >
                   <h3
-                    className={`text-[24px] font-[700] mb-1 font-funnel transition-colors duration-300 ${
+                    className={`text-[18px] sm:text-[20px] lg:text-[24px] font-[700] mb-1 font-funnel leading-tight transition-colors duration-300 ${
                       isSelected ? "text-white" : "text-black"
                     }`}
                   >
                     {product.name}
                   </h3>
                   <p
-                    className={`mb-4 font-inter transition-colors duration-300 ${
+                    className={`mb-2 sm:mb-3 lg:mb-4 text-[12px] sm:text-[14px] lg:text-[16px] font-inter leading-tight transition-colors duration-300 ${
                       isSelected ? "text-[#FFFFFFCC]" : "text-[#324998]"
                     }`}
                   >
                     {product.subtitle}
                   </p>
                   <p
-                    className={`text-[18px] font-inter transition-colors duration-300 ${
+                    className={`text-[14px] sm:text-[16px] lg:text-[18px] font-inter leading-tight transition-colors duration-300 ${
                       isSelected ? "text-[#FFFFFFCC]" : "text-[#000000CC]"
                     }`}
                   >
@@ -158,7 +158,8 @@ export default function Solutions() {
 
         {/* Features Flow */}
         <div className="pt-12">
-          <div className="relative flex justify-between overflow-x-auto pb-4 -mx-6 px-6 lg:mx-0 lg:px-0">
+          {/* ========== DESKTOP: Horizontal Flow with Animated Line ========== */}
+          <div className="relative hidden lg:flex flex-row flex-nowrap justify-between items-stretch overflow-x-auto pb-4 -mx-6 px-6 lg:mx-0 lg:px-0 min-w-max">
             {/* Connecting Dashed Line - 底层灰色虚线 */}
             <div
               className="absolute top-[18px] h-[2px] border-t-2 border-dashed border-[#C0C0C0]"
@@ -215,7 +216,7 @@ export default function Solutions() {
               return (
                 <div
                   key={feature.name}
-                  className="relative flex flex-col items-center text-center w-[100px]"
+                  className="relative flex flex-col items-center text-center w-[100px] shrink-0"
                 >
                   <div
                     className={`w-[38px] h-[38px] rounded-full flex items-center justify-center mb-3 relative z-10 transition-all duration-500 ${
@@ -233,6 +234,46 @@ export default function Solutions() {
                   </div>
                   <span
                     className={`text-[12px] font-inter leading-tight max-w-[100px] transition-colors duration-300 ${
+                      isActive ? "text-black font-medium" : "text-gray-600"
+                    }`}
+                  >
+                    {feature.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* ========== MOBILE: Grid Layout (4列 x 3行) ========== */}
+          <div className="lg:hidden grid grid-cols-4 gap-x-2 gap-y-5">
+            {features.map((feature) => {
+              const activeIcons = selectedCard
+                ? productActiveFeatures[selectedCard] || []
+                : [];
+              const isActive = activeIcons.includes(feature.icon);
+              const activeOrder = activeIcons.indexOf(feature.icon);
+
+              return (
+                <div
+                  key={feature.name}
+                  className="relative flex flex-col items-center text-center"
+                >
+                  <div
+                    className={`w-[34px] h-[34px] rounded-full flex items-center justify-center mb-2 relative z-10 transition-all duration-500 ${
+                      isActive
+                        ? "bg-black border-2 border-black"
+                        : "bg-white border border-[#E0E0E0]"
+                    }`}
+                    style={{
+                      transitionDelay: isActive
+                        ? `${activeOrder * 60}ms`
+                        : "0ms"
+                    }}
+                  >
+                    <FeatureIcon type={feature.icon} isActive={isActive} />
+                  </div>
+                  <span
+                    className={`text-[9px] font-inter leading-tight transition-colors duration-300 ${
                       isActive ? "text-black font-medium" : "text-gray-600"
                     }`}
                   >
