@@ -80,7 +80,7 @@ export default function Research() {
           <button
             onClick={handlePrev}
             disabled={isAtStart}
-            className="absolute -left-16 z-10 cursor-pointer disabled:cursor-default"
+            className="absolute -left-16 top-1/2 -translate-y-1/2 z-10 cursor-pointer disabled:cursor-default"
           >
             <Image
               src={
@@ -89,8 +89,8 @@ export default function Research() {
                   : "/icons/left-arrow.svg"
               }
               alt="Previous"
-              width={24}
-              height={24}
+              width={32}
+              height={32}
             />
           </button>
 
@@ -152,7 +152,7 @@ export default function Research() {
           <button
             onClick={handleNext}
             disabled={isAtEnd}
-            className="absolute -right-16 z-10 cursor-pointer disabled:cursor-default"
+            className="absolute -right-16 top-1/2 -translate-y-1/2 z-10 cursor-pointer disabled:cursor-not-allowed"
           >
             <Image
               src={
@@ -161,8 +161,8 @@ export default function Research() {
                   : "/icons/right-arrow.svg"
               }
               alt="Next"
-              width={24}
-              height={24}
+              width={32}
+              height={32}
             />
           </button>
         </div>
