@@ -72,7 +72,7 @@ export default function ResearchReport001() {
           Following the implementation of policies by the Trump administration, U.S. regulation has shifted from &quot;enforcement-first&quot; to a &quot;legislative orientation.&quot; The core logic of this shift lies in integrating crypto assets into existing financial prudential frameworks rather than simple prohibition. Globally, the room for regulatory arbitrage is rapidly shrinking, with G7 policy convergence significantly strengthening.
         </p>
 
-        <SectionTitle>2. USA: Dual-Track System & Wall Street&apos;s Advance</SectionTitle>
+        <SectionTitle>2. USA: Dual-Track System &amp; Wall Street&apos;s Advance</SectionTitle>
         <div className="flex flex-col md:flex-row gap-6">
           <div className="w-full md:w-1/2">
             <SubSectionTitle>2.1 The GENIUS Act: Stablecoin Federalization</SubSectionTitle>
@@ -92,13 +92,13 @@ export default function ResearchReport001() {
               <RegulatoryCard
                 title="CFTC Jurisdiction"
                 subtitle="Digital Commodities (BTC, ETH)"
-                description="Exclusive jurisdiction over spot market anti-fraud & manipulation."
+                description="Exclusive jurisdiction over spot market anti-fraud &amp; manipulation."
                 color="border-blue-600"
               />
               <RegulatoryCard
                 title="SEC Jurisdiction"
                 subtitle="Investment Contracts"
-                description="Focus on fundraising stages & centralized projects; emphasizes disclosure."
+                description="Focus on fundraising stages &amp; centralized projects; emphasizes disclosure."
                 color="border-yellow-500"
               />
               <RegulatoryCard
@@ -151,19 +151,19 @@ export default function ResearchReport001() {
               Hong Kong and Singapore continue to advance stablecoin licensing regimes, competing for status as cross-border payment hubs.
             </p>
           </div>
-          <div className="w-full md:w-1/2 bg-white border border-gray-200 p-2 rounded">
+          <div className="w-full md:w-1/2 bg-white border border-gray-200 p-2 rounded flex flex-col justify-center">
             <h4 className="text-xs font-bold text-gray-500 uppercase mb-2 text-center">Top Marginal Tax Rates (2026)</h4>
             <TaxChart />
           </div>
         </div>
 
-        <SectionTitle>6. Industry M&A & The Global Compliance Net</SectionTitle>
+        <SectionTitle>6. Industry M&amp;A &amp; The Global Compliance Net</SectionTitle>
         <p className="text-base md:text-lg leading-relaxed mb-4 text-gray-900">
           The OECD&apos;s CARF (Crypto-Asset Reporting Framework) has been signed by over 48 jurisdictions. Surging compliance costs are reshaping the industry landscape.
         </p>
 
-        <div className="flex flex-col md:flex-row gap-6 items-center">
-          <div className="w-full md:w-1/2 bg-white border border-gray-200 p-4 rounded">
+        <div className="flex flex-col md:flex-row gap-6 md:items-start mb-8">
+          <div className="w-full md:w-1/2 bg-white border border-gray-200 p-6 rounded flex flex-col justify-center">
             <h4 className="text-xs font-bold text-gray-500 uppercase mb-4 text-center">Industry M&A Volume ($ Billion)</h4>
             <MAChart />
           </div>
@@ -209,9 +209,9 @@ export default function ResearchReport001() {
               </tr>
             </thead>
             <tbody>
-              <TableRow cells={["Reserve Req.", "1:1 Cash/T-Bills", "High Liquidity Assets", "Held at Licensed Banks"]} highlight />
-              <TableRow cells={["Interest Payment", "Explicitly Prohibited", "Prohibited", "Discouraged"]} red />
-              <TableRow cells={["Primary Goal", "USD Dominance / Anti-Shadow Banking", "Consumer Protection", "Financial Hub Status"]} />
+              <TableRow cells={["Reserve Req.", "1:1 Cash/T-Bills", "High Liquidity Assets", "Held at Licensed Banks"]} firstColBold />
+              <TableRow cells={["Interest Payment", "Explicitly Prohibited", "Prohibited", "Discouraged"]} redRow />
+              <TableRow cells={["Primary Goal", "USD Dominance / Anti-Shadow Banking", "Consumer Protection", "Financial Hub Status"]} firstColBold />
             </tbody>
           </table>
         </div>
@@ -257,9 +257,9 @@ function DashboardCard({ label, value, valueSuffix = "", note, oldValue, valueCo
   );
 }
 
-function SectionTitle({ children }: { children: string }) {
+function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-serif text-gray-900 border-b-2 border-gray-200 pb-2 mt-12 mb-6 md:mb-8 text-xl md:text-2xl font-bold">
+    <h3 className="font-['Georgia'] text-gray-900 border-b-2 border-gray-200 pb-2 mt-12 mb-6 md:mb-8 text-xl md:text-2xl font-bold">
       {children}
     </h3>
   );
@@ -306,14 +306,33 @@ function RiskItem({ children }: { children: string }) {
   );
 }
 
-function TableRow({ cells, highlight, red }: { cells: string[]; highlight?: boolean; red?: boolean }) {
+function TableRow({ cells, firstColBold, redRow }: { cells: string[]; firstColBold?: boolean; redRow?: boolean }) {
   return (
     <tr className="border-b border-gray-100">
-      {cells.map((cell, i) => (
-        <td key={i} className={`p-3 text-sm ${highlight ? "bg-blue-50 font-medium text-[#0F172A]" : ""} ${red ? "text-red-600" : "text-gray-900"}`}>
-          {cell}
-        </td>
-      ))}
+      {cells.map((cell, i) => {
+        const isFirstCol = i === 0;
+        const isSecondCol = i === 1;
+        const isThirdCol = i === 2;
+
+        let cellClass = "p-3 text-sm ";
+
+        if (firstColBold && isFirstCol) {
+          cellClass += "font-medium text-gray-700 ";
+        } else if (redRow) {
+          // 第二行：只有第2、3列是红色
+          if (isSecondCol) {
+            cellClass += "text-red-600 font-bold ";
+          } else if (isThirdCol) {
+            cellClass += "text-red-600 ";
+          } else {
+            cellClass += "text-gray-900 ";
+          }
+        } else {
+          cellClass += "text-gray-900 ";
+        }
+
+        return <td key={i} className={cellClass}>{cell}</td>;
+      })}
     </tr>
   );
 }
@@ -329,12 +348,12 @@ function TaxChart() {
 
   const maxY = 60;
   const barPercentage = 0.6;
-  const xLabelHeight = 16; // Space for X-axis labels
+  const xLabelHeight = 20; // Space for X-axis labels
 
   return (
     <div className="h-80 relative px-2">
       {/* Y-axis grid lines and labels */}
-      <div className="absolute inset-0 flex flex-col justify-between text-[10px] text-[#64748B] pointer-events-none" style={{ paddingBottom: xLabelHeight }}>
+      <div className="absolute inset-0 flex flex-col justify-between text-xs font-medium text-gray-700 pointer-events-none" style={{ paddingBottom: xLabelHeight }}>
         <div className="flex items-center">
           <span className="w-8 text-right pr-1">60%</span>
           <div className="flex-1 border-t border-gray-200 border-dashed" />
@@ -359,11 +378,11 @@ function TaxChart() {
           {data.map((item) => (
             <div
               key={item.label}
-              className="flex flex-col items-center justify-end flex-1 max-w-[50px]"
+              className="flex flex-col items-center justify-end flex-1 max-w-[50px] relative"
               style={{ height: "100%" }}
             >
               {/* Value label on top */}
-              <div className="text-[10px] font-bold text-[#64748B] mb-1">
+              <div className="text-xs font-bold text-gray-700 mb-1">
                 {item.value}%
               </div>
               {/* Bar */}
@@ -375,13 +394,15 @@ function TaxChart() {
                   width: `${barPercentage * 100}%`
                 }}
               />
+              {/* X-axis line at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 border-t border-gray-300" style={{ top: '100%' }} />
             </div>
           ))}
         </div>
       </div>
 
       {/* X-axis labels (outside the bars container) */}
-      <div className="absolute bottom-0 left-10 right-0 flex justify-around text-[9px] text-[#64748B]" style={{ height: xLabelHeight }}>
+      <div className="absolute bottom-0 left-10 right-0 flex justify-around text-xs font-medium text-gray-700" style={{ height: xLabelHeight }}>
         {data.map((item) => (
           <div key={item.label} className="flex-1 max-w-[50px] text-center leading-tight">
             {item.label}
@@ -392,7 +413,7 @@ function TaxChart() {
   );
 }
 
-// M&A Chart Component - Line chart showing M&A volume growth
+// M&A Chart Component - Line chart showing M&A volume growth (pure CSS implementation)
 function MAChart() {
   const data = [
     { year: "23", value: 18 },
@@ -401,68 +422,117 @@ function MAChart() {
     { year: "26E", value: 112 },
   ];
 
-  const max = 120;
+  const maxY = 120;
+
+  // Calculate point positions (percentage)
   const points = data.map((d, i) => {
     const x = (i / (data.length - 1)) * 100;
-    const y = 100 - (d.value / max) * 100;
+    const y = ((maxY - d.value) / maxY) * 100;
     return { x, y, value: d.value, year: d.year };
   });
 
+  // Generate smooth bezier curve for SVG path
+  const getSmoothPath = (pts: typeof points) => {
+    if (pts.length < 2) return "";
+
+    const tension = 0.4;
+    let path = `M ${pts[0].x} ${pts[0].y}`;
+
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[Math.max(0, i - 1)];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = pts[Math.min(pts.length - 1, i + 2)];
+
+      const cp1x = p1.x + (p2.x - p0.x) * tension;
+      const cp1y = p1.y + (p2.y - p0.y) * tension;
+      const cp2x = p2.x - (p3.x - p1.x) * tension;
+      const cp2y = p2.y - (p3.y - p1.y) * tension;
+
+      path += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
+    }
+
+    return path;
+  };
+
+  const linePath = getSmoothPath(points);
+  const areaPath = `${linePath} L 100 100 L 0 100 Z`;
+
+  const yAxisLabels = ["120", "100", "80", "60", "40", "20", "0"];
+  const gridCount = yAxisLabels.length - 1; // 6 intervals
+
   return (
-    <div className="h-44 relative">
-      {/* Grid lines */}
-      <div className="absolute inset-0 flex flex-col justify-between text-[10px] text-gray-400">
-        <div className="border-b border-gray-100 pb-1">$120B</div>
-        <div className="border-b border-gray-100 pb-1">$90B</div>
-        <div className="border-b border-gray-100 pb-1">$60B</div>
-        <div className="border-b border-gray-100 pb-1">$30B</div>
-        <div>0</div>
+    <div className="relative flex" style={{ height: '240px' }}>
+      {/* Y-axis labels */}
+      <div className="flex flex-col" style={{ width: '25px' }}>
+        {yAxisLabels.map((tick, i) => (
+          <div key={i} className="flex items-end justify-end w-full" style={{ height: `${100 / gridCount}%` }}>
+            <span className="text-[10px] text-gray-500 text-right pr-1 shrink-0 leading-none">{tick}</span>
+          </div>
+        ))}
       </div>
 
-      {/* SVG Line Chart */}
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+      {/* Chart area */}
+      <div className="flex-1 relative">
+        {/* Y-axis grid lines */}
+        <div className="absolute inset-0 flex flex-col" style={{ paddingTop: 0 }}>
+          {yAxisLabels.map((tick, i) => (
+            <div key={i} className="w-full border-t border-gray-200 border-dashed" style={{ height: `${100 / gridCount}%` }} />
+          ))}
+        </div>
+
+        {/* X-axis line */}
+        <div className="absolute bottom-0 left-0 right-0 border-t border-gray-300" style={{ top: '100%' }} />
+
         {/* Area fill */}
-        <path
-          d={`M0,100 L${points.map(p => `${p.x},${p.y}`).join(" L")} L100,100 Z`}
-          fill="rgba(15, 23, 42, 0.1)"
-        />
-        {/* Line */}
-        <polyline
-          points={points.map(p => `${p.x},${p.y}`).join(" ")}
-          fill="none"
-          stroke="#0F172A"
-          strokeWidth="2"
-          strokeLinejoin="round"
-        />
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path
+            d={areaPath}
+            fill="rgba(0, 0, 0, 0.08)"
+            stroke="none"
+          />
+          {/* Smooth line */}
+          <path
+            d={linePath}
+            fill="none"
+            stroke="black"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+
         {/* Data points */}
         {points.map((p) => (
-          <circle
+          <div
             key={p.year}
-            cx={p.x}
-            cy={p.y}
-            r="2.5"
-            fill="#0F172A"
+            className="absolute rounded-full border-2 border-white bg-black transform -translate-x-1/2 -translate-y-1/2"
+            style={{
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              width: '14px',
+              height: '14px'
+            }}
           />
         ))}
-      </svg>
 
-      {/* X-axis labels */}
-      <div className="absolute -bottom-5 left-0 right-0 flex justify-around text-[10px] text-gray-500">
-        {data.map((d) => (
-          <span key={d.year}>{d.year}</span>
-        ))}
-      </div>
-
-      {/* Value labels above points */}
-      {points.map((p) => (
-        <div
-          key={p.year}
-          className="absolute text-[9px] text-gray-700 font-medium"
-          style={{ left: `${p.x}%`, top: `${p.y - 8}%`, transform: "translateX(-50%)" }}
-        >
-          ${p.value}B
+        {/* X-axis labels */}
+        <div className="absolute bottom-0 left-0 right-0 text-[10px] text-gray-500">
+          {data.map((d, i) => {
+            const x = (i / (data.length - 1)) * 100;
+            return (
+              <span
+                key={d.year}
+                className="absolute transform -translate-x-1/2"
+                style={{ left: `${x}%` }}
+              >
+                {d.year}
+              </span>
+            );
+          })}
         </div>
-      ))}
+      </div>
     </div>
   );
 }
