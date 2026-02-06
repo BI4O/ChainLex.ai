@@ -75,30 +75,30 @@ export default function Research() {
         </h2>
 
         {/* ========== DESKTOP: Research Cards Carousel ========== */}
-        <div className="hidden md:block relative flex items-center justify-center h-[450px]">
-          {/* Left Arrow */}
-          <button
-            onClick={handlePrev}
-            disabled={isAtStart}
-            className="absolute -left-16 top-1/2 -translate-y-1/2 z-10 cursor-pointer disabled:cursor-default"
-          >
-            <Image
-              src={
-                isAtStart
-                  ? "/icons/left-arrow-disabled.svg"
-                  : "/icons/left-arrow.svg"
-              }
-              alt="Previous"
-              width={32}
-              height={32}
-            />
-          </button>
-
-          {/* Cards Container */}
+        <div className="hidden md:block relative h-[450px]">
+          {/* Cards Container - 居中显示 */}
           <div
-            className="overflow-hidden"
+            className="overflow-hidden mx-auto"
             style={{ width: `${3 * desktopCardWidth + 2 * desktopGap}px` }}
           >
+            {/* Left Arrow - 相对于容器定位 */}
+            <button
+              onClick={handlePrev}
+              disabled={isAtStart}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full z-10 cursor-pointer disabled:cursor-default"
+              style={{ marginRight: `${16 - desktopGap}px` }}
+            >
+              <Image
+                src={
+                  isAtStart
+                    ? "/icons/left-arrow-disabled.svg"
+                    : "/icons/left-arrow.svg"
+                }
+                alt="Previous"
+                width={32}
+                height={32}
+              />
+            </button>
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
@@ -146,25 +146,26 @@ export default function Research() {
                 </Link>
               ))}
             </div>
-          </div>
 
-          {/* Right Arrow */}
-          <button
-            onClick={handleNext}
-            disabled={isAtEnd}
-            className="absolute -right-16 top-1/2 -translate-y-1/2 z-10 cursor-pointer disabled:cursor-not-allowed"
-          >
-            <Image
-              src={
-                isAtEnd
-                  ? "/icons/right-arrow-disabled.svg"
-                  : "/icons/right-arrow.svg"
-              }
-              alt="Next"
-              width={32}
-              height={32}
-            />
-          </button>
+            {/* Right Arrow - 相对于容器定位 */}
+            <button
+              onClick={handleNext}
+              disabled={isAtEnd}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full z-10 cursor-pointer disabled:cursor-not-allowed"
+              style={{ marginLeft: `${16 - desktopGap}px` }}
+            >
+              <Image
+                src={
+                  isAtEnd
+                    ? "/icons/right-arrow-disabled.svg"
+                    : "/icons/right-arrow.svg"
+                }
+                alt="Next"
+                width={32}
+                height={32}
+              />
+            </button>
+          </div>
         </div>
 
         {/* ========== MOBILE: Research Cards Carousel ========== */}
