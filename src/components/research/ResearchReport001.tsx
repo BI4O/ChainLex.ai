@@ -141,24 +141,24 @@ export default function ResearchReport001() {
         <SectionTitle>5. APAC: Tax Incentives & The Battle for Web3</SectionTitle>
         <div className="flex flex-col md:flex-row gap-6 mb-8">
           <div className="w-full md:w-1/2">
-            <p className="text-base md:text-lg leading-relaxed text-justify mb-4 text-gray-900">
+            <p className="text-base md:text-lg leading-relaxed mb-4 text-gray-900">
               Unlike the defensive posture of the West, the APAC region (Japan, Hong Kong, Singapore) has pivoted to &quot;industry promotion.&quot;
             </p>
-            <p className="text-base md:text-lg leading-relaxed text-justify mb-4 text-gray-900">
+            <p className="text-base md:text-lg leading-relaxed mb-4 text-gray-900">
               <strong>Japan&apos;s FY2026 Tax Reform</strong> is a major highlight: reducing the crypto asset gains tax rate from a maximum of 55% (miscellaneous income) to <strong>20% (separate self-assessment taxation)</strong>, and allowing loss carryovers for three years. Additionally, the &quot;unrealized gains tax&quot; on corporate holdings has been abolished, expected to trigger a significant return of Web3 firms to Japan.
             </p>
-            <p className="text-base md:text-lg leading-relaxed text-justify text-gray-900">
+            <p className="text-base md:text-lg leading-relaxed text-gray-900">
               Hong Kong and Singapore continue to advance stablecoin licensing regimes, competing for status as cross-border payment hubs.
             </p>
           </div>
-          <div className="w-full md:w-1/2 bg-white border border-gray-200 p-4 rounded">
-            <h4 className="text-xs font-bold text-gray-500 uppercase mb-4 text-center">Top Marginal Tax Rates (2026)</h4>
+          <div className="w-full md:w-1/2 bg-white border border-gray-200 p-2 rounded">
+            <h4 className="text-xs font-bold text-gray-500 uppercase mb-2 text-center">Top Marginal Tax Rates (2026)</h4>
             <TaxChart />
           </div>
         </div>
 
         <SectionTitle>6. Industry M&A & The Global Compliance Net</SectionTitle>
-        <p className="text-base md:text-lg leading-relaxed text-justify mb-4 text-gray-900">
+        <p className="text-base md:text-lg leading-relaxed mb-4 text-gray-900">
           The OECD&apos;s CARF (Crypto-Asset Reporting Framework) has been signed by over 48 jurisdictions. Surging compliance costs are reshaping the industry landscape.
         </p>
 
@@ -168,10 +168,10 @@ export default function ResearchReport001() {
             <MAChart />
           </div>
           <div className="w-full md:w-1/2">
-            <p className="text-base md:text-lg leading-relaxed text-justify mb-4 text-gray-900">
+            <p className="text-base md:text-lg leading-relaxed mb-4 text-gray-900">
               <strong>M&A Boom:</strong> Due to prohibitive compliance infrastructure costs (legal & tech compliance alone exceeding $5M annually), small-to-mid-sized exchanges and wallet providers are seeking exits.
             </p>
-            <p className="text-base md:text-lg leading-relaxed text-justify text-gray-900">
+            <p className="text-base md:text-lg leading-relaxed text-gray-900">
               TradFi giants (e.g., BlackRock, Fidelity) are rapidly completing infrastructure layouts by acquiring licensed crypto-native firms.
             </p>
           </div>
@@ -318,32 +318,76 @@ function TableRow({ cells, highlight, red }: { cells: string[]; highlight?: bool
   );
 }
 
-// Tax Chart Component - Bar chart showing tax rates
+// Tax Chart Component - Bar chart showing tax rates (matching original Chart.js design)
 function TaxChart() {
   const data = [
-    { label: "Japan (Old)", value: 55, color: "bg-red-500" },
-    { label: "Japan (New)", value: 20, color: "bg-green-500" },
-    { label: "USA", value: 20, color: "bg-blue-500" },
-    { label: "UK", value: 20, color: "bg-slate-400" },
+    { label: "Japan (Old)", value: 55, color: "#EF4444" },
+    { label: "Japan (New)", value: 20, color: "#22C55E" },
+    { label: "USA", value: 20, color: "#3B82F6" },
+    { label: "UK", value: 20, color: "#94A3B8" },
   ];
 
+  const maxY = 60;
+  const barPercentage = 0.6;
+  const xLabelHeight = 16; // Space for X-axis labels
+
   return (
-    <div className="h-48 flex items-end justify-around gap-3 px-4 pb-6">
-      {data.map((item) => (
-        <div key={item.label} className="flex flex-col items-center flex-1 max-w-[60px]">
-          {/* Value label on top */}
-          <div className="text-xs font-bold text-gray-800 mb-2">{item.value}%</div>
-          {/* Bar */}
-          <div
-            className={`${item.color} w-full rounded-t-md shadow-sm min-h-[8px]`}
-            style={{ height: `${Math.max((item.value / 60) * 100, 8)}%` }}
-          />
-          {/* Label below */}
-          <div className="text-[10px] text-gray-600 mt-3 text-center leading-tight font-medium">
+    <div className="h-80 relative px-2">
+      {/* Y-axis grid lines and labels */}
+      <div className="absolute inset-0 flex flex-col justify-between text-[10px] text-[#64748B] pointer-events-none" style={{ paddingBottom: xLabelHeight }}>
+        <div className="flex items-center">
+          <span className="w-8 text-right pr-1">60%</span>
+          <div className="flex-1 border-t border-gray-200 border-dashed" />
+        </div>
+        <div className="flex items-center">
+          <span className="w-8 text-right pr-1">40%</span>
+          <div className="flex-1 border-t border-gray-200 border-dashed" />
+        </div>
+        <div className="flex items-center">
+          <span className="w-8 text-right pr-1">20%</span>
+          <div className="flex-1 border-t border-gray-200 border-dashed" />
+        </div>
+        <div className="flex items-end">
+          <span className="w-8 text-right pr-1 pb-[1px]">0%</span>
+          <div className="flex-1 border-t border-gray-300" />
+        </div>
+      </div>
+
+      {/* Bars container */}
+      <div className="absolute inset-0 pl-10" style={{ paddingBottom: xLabelHeight }}>
+        <div className="w-full h-full flex items-end justify-around">
+          {data.map((item) => (
+            <div
+              key={item.label}
+              className="flex flex-col items-center justify-end flex-1 max-w-[50px]"
+              style={{ height: "100%" }}
+            >
+              {/* Value label on top */}
+              <div className="text-[10px] font-bold text-[#64748B] mb-1">
+                {item.value}%
+              </div>
+              {/* Bar */}
+              <div
+                className="w-full rounded-t-sm shadow-sm min-h-[2px]"
+                style={{
+                  backgroundColor: item.color,
+                  height: `${Math.max((item.value / maxY) * 100, 2)}%`,
+                  width: `${barPercentage * 100}%`
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* X-axis labels (outside the bars container) */}
+      <div className="absolute bottom-0 left-10 right-0 flex justify-around text-[9px] text-[#64748B]" style={{ height: xLabelHeight }}>
+        {data.map((item) => (
+          <div key={item.label} className="flex-1 max-w-[50px] text-center leading-tight">
             {item.label}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
