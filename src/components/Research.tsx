@@ -6,32 +6,32 @@ import { useState } from "react";
 
 const researchItems = [
   {
-    title: "The 2026 Crypto Regulation outlook",
-    image: "/images/agent-matrix.webp",
+    title: "2026 Global Crypto Asset Regulation Outlook",
+    image: "/images/research-bg.webp",
     link: "/research/1"
   },
   {
-    title: "The 2026 Crypto Regulation outlook",
+    title: "The DeFi Compliance Framework",
     image: "/images/agent-matrix.webp",
     link: "/research/2"
   },
   {
-    title: "The 2026 Crypto Regulation outlook",
+    title: "Stablecoin Reserve Requirements Analysis",
     image: "/images/agent-matrix.webp",
     link: "/research/3"
   },
   {
-    title: "The 2026 Crypto Regulation outlook",
+    title: "EU MiCA Implementation Guide",
     image: "/images/agent-matrix.webp",
     link: "/research/4"
   },
   {
-    title: "The 2026 Crypto Regulation outlook",
+    title: "APAC Web3 Tax Incentives Report",
     image: "/images/agent-matrix.webp",
     link: "/research/5"
   },
   {
-    title: "The 2026 Crypto Regulation outlook",
+    title: "DAO Legal Structures & Risk Assessment",
     image: "/images/agent-matrix.webp",
     link: "/research/6"
   }

@@ -3,63 +3,61 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
+import fs from "fs/promises";
+import path from "path";
+import dynamic from "next/dynamic";
 
-// Generate static params for all research pages
+// Research data types
+export interface ResearchData {
+  id: string;
+  title: string;
+  subtitle?: string;
+  date: string;
+  category?: string;
+  heroImage: string;
+  component?: string; // 组件名称（如 ResearchReport001）
+}
+
+// Read JSON data
+async function getResearchData(id: string): Promise<ResearchData> {
+  try {
+    const fileName = `research-${id.padStart(3, '0')}.json`;
+    const filePath = path.join(process.cwd(), 'research-data', fileName);
+    const fileContent = await fs.readFile(filePath, 'utf8');
+    return JSON.parse(fileContent);
+  } catch (error) {
+    // Fallback to default data if file not found
+    console.error(`Research data not found for id: ${id}`, error);
+    return {
+      id: "1",
+      title: "Research Not Found",
+      date: "",
+      heroImage: "/images/research-bg.webp",
+    };
+  }
+}
+
+// Generate static params - 在 output: export 模式下需要同步返回
 export function generateStaticParams() {
   return [
-    { id: "1" },
-    { id: "2" },
-    { id: "3" },
-    { id: "4" },
-    { id: "5" },
-    { id: "6" }
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+    { id: '4' },
+    { id: '5' },
+    { id: '6' }
   ];
 }
 
-// Mock data - in real app this would come from API/database
-const researchData: Record<
-  string,
-  {
-    title: string;
-    date: string;
-    image: string;
-    content: string[];
-  }
-> = {
-  "1": {
-    title: "The 2026 Crypto Regulation outlook",
-    date: "Dec 9, 2025",
-    image: "/images/agent-matrix.webp",
-    content: [
-      "Miami, FL - Securitize, the leader in tokenizing real-world assets (RWAs), today announced the appointment of Jerome Roche as its new General Counsel. Roche joins Securitize from PayPal, where he served as Head of Legal for Digital Assets and played a central role in the development,launch, and regulatory strategy for some of the company's most significant financial-technology initiatives, including PayPal USD (PYUSD), a U.S. dollar denominated stablecoin.",
-      "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization.",
-      "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization.",
-      "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization."
-    ]
-  },
-  "2": {
-    title: "The 2026 Crypto Regulation outlook",
-    date: "Dec 9, 2025",
-    image: "/images/agent-matrix.webp",
-    content: [
-      "Miami, FL - Securitize, the leader in tokenizing real-world assets (RWAs), today announced the appointment of Jerome Roche as its new General Counsel. Roche joins Securitize from PayPal, where he served as Head of Legal for Digital Assets and played a central role in the development, launch, and regulatory strategy for some of the company's most significant financial-technology initiatives, including PayPal USD (PYUSD), a U.S. dollar denominated stablecoin.",
-      "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization.",
-      "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization.",
-      "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization."
-    ]
-  },
-  "3": {
-    title: "The 2026 Crypto Regulation outlook",
-    date: "Dec 9, 2025",
-    image: "/images/agent-matrix.webp",
-    content: [
-      "Miami, FL - Securitize, the leader in tokenizing real-world assets (RWAs), today announced the appointment of Jerome Roche as its new General Counsel. Roche joins Securitize from PayPal, where he served as Head of Legal for Digital Assets and played a central role in the development, launch, and regulatory strategy for some of the company's most significant financial-technology initiatives, including PayPal USD (PYUSD), a U.S. dollar denominated stablecoin.",
-      "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization.",
-      "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization.",
-      "Roche's hiring represents a meaningful step in Securitize's continued elevation as the company scales regulated tokenization infrastructure across the U.S. and Europe. With more than 20 years of combined experience across fintech, banking, big law, and government, including securities trading, stablecoin development, and crypto regulatory strategy, Roche brings the rare blend of deep regulatory fluency and modern technology expertise essential for the next stage of compliant, global tokenization."
-    ]
-  }
-};
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const research = await getResearchData(id);
+
+  return {
+    title: `${research.title} | ChainLex Research`,
+    description: research.subtitle || research.title,
+  };
+}
 
 export default async function ResearchDetail({
   params
@@ -67,18 +65,26 @@ export default async function ResearchDetail({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const research = researchData[id] || researchData["1"];
+  const research = await getResearchData(id);
+
+  // 动态加载报告组件
+  const ResearchComponent = research.component
+    ? dynamic(
+        () => import(`@/components/research/${research.component}`).catch(() => null),
+        { ssr: true }
+      )
+    : null;
 
   return (
     <main className="min-h-screen flex flex-col">
       <Header />
 
       {/* Hero Section with Background */}
-      <section className="relative h-[480px]">
+      <section className="relative h-[360px]">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/research-bg.webp"
+            src={research.heroImage}
             alt={research.title}
             fill
             className="object-cover"
@@ -93,7 +99,7 @@ export default async function ResearchDetail({
         </div>
 
         {/* Content */}
-        <div className="relative z-10 h-full px-[12%] pt-[160px]">
+        <div className="relative z-10 h-full px-[12%] pt-32">
           {/* Back Button */}
           <Link
             href="/"
@@ -105,36 +111,42 @@ export default async function ResearchDetail({
             </span>
           </Link>
 
-          <div className="mb-6 w-full h-[1px] bg-[#FFFFFF1F]" />
+          <div className="mb-6 w-full h-px bg-[#FFFFFF1F]" />
+
+          {/* Category & Date */}
+          <div className="flex items-center gap-3 mb-4">
+            {research.category && (
+              <span className="bg-brand-navy text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-widest">
+                {research.category}
+              </span>
+            )}
+            <span className="text-gray-500 text-xs font-serif italic">{research.date}</span>
+          </div>
 
           {/* Title */}
-          <h1 className="font-bodoni text-[60px] text-white mb-4 font-regular">
+          <h1 className="font-bodoni text-[48px] text-white mb-4 font-regular leading-tight">
             {research.title}
           </h1>
 
-          {/* Date */}
-          <p className="font-inter text-white/80 text-[18px] font-regular">
-            {research.date}
-          </p>
+          {/* Subtitle */}
+          {research.subtitle && (
+            <p className="font-serif text-white/80 text-[18px] italic max-w-3xl">
+              {research.subtitle}
+            </p>
+          )}
         </div>
       </section>
 
       {/* Content Section */}
       <section className="flex-1 bg-white py-16">
         <div className="px-[12%]">
-          {research.content.map((paragraph, index) => (
-            <p
-              key={index}
-              className="font-inter text-[20px] text-black/80 leading-relaxed mb-6 last:mb-0 font-regular"
-            >
-              {index === 0 && (
-                <span className="font-semibold weight-[600] text-black/80">
-                  Miami, FL
-                </span>
-              )}
-              {index === 0 ? paragraph.replace("Miami, FL", " -") : paragraph}
-            </p>
-          ))}
+          {ResearchComponent ? (
+            <ResearchComponent />
+          ) : (
+            <div className="text-center py-20">
+              <p className="text-gray-500 text-lg">Research content not available.</p>
+            </div>
+          )}
         </div>
       </section>
 
