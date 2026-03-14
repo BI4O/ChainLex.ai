@@ -24,13 +24,13 @@ const logos = [
     height: 100
   },
   { name: "hkust", src: "/images/logos/hkust.webp", width: 220, height: 100 },
-  { name: "gsbn", src: "/images/logos/gsbn.webp", width: 220, height: 100 },
-  {
-    name: "kingwood",
-    src: "/images/logos/kingwood.webp",
-    width: 220,
-    height: 100
-  },
+  // { name: "gsbn", src: "/images/logos/gsbn.webp", width: 220, height: 100 },
+  // {
+  //   name: "kingwood",
+  //   src: "/images/logos/kingwood.webp",
+  //   width: 220,
+  //   height: 100
+  // },
   { name: "ey", src: "/images/logos/ey.webp", width: 220, height: 100 },
   { name: "aws", src: "/images/logos/aws.webp", width: 220, height: 100 },
   { name: "sipac", src: "/images/logos/sipac.webp", width: 220, height: 100 }
